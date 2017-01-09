@@ -1,0 +1,805 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04D472FDEA7670E00EAEECD2 /* Pods_hobbou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E55B32304DABA46F7564E9 /* Pods_hobbou.framework */; };
+		135B6626763E63A333A28884 /* Pods_hobbouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AE298953F90EB7AA414C00 /* Pods_hobbouUITests.framework */; };
+		8BED4AAB4766A016B9745EEF /* Pods_hobbouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB66C61FDC6739A5245FB03 /* Pods_hobbouTests.framework */; };
+		910FB2F01E1DFFD500C811E3 /* MainPageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2EF1E1DFFD500C811E3 /* MainPageTabViewController.swift */; };
+		910FB2F31E1E040B00C811E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2F21E1E040B00C811E3 /* HomeViewController.swift */; };
+		910FB2F51E1E053000C811E3 /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2F41E1E053000C811E3 /* AdventureViewController.swift */; };
+		910FB2F71E1E058F00C811E3 /* HoBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2F61E1E058F00C811E3 /* HoBViewController.swift */; };
+		910FB2F91E1E0B4C00C811E3 /* AppMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2F81E1E0B4C00C811E3 /* AppMenuController.swift */; };
+		910FB3381E1E3E4E00C811E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3371E1E3E4E00C811E3 /* Extensions.swift */; };
+		910FB33A1E1E54CB00C811E3 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3391E1E54CB00C811E3 /* MainNavigationController.swift */; };
+		910FB33D1E1E5D5200C811E3 /* HomeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB33C1E1E5D5200C811E3 /* HomeCellView.swift */; };
+		910FB33F1E1FA6B600C811E3 /* BaseContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB33E1E1FA6B600C811E3 /* BaseContentView.swift */; };
+		910FB3411E2340F100C811E3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3401E2340F100C811E3 /* SearchViewController.swift */; };
+		910FB3431E23468F00C811E3 /* AppSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3421E23468F00C811E3 /* AppSearchBarController.swift */; };
+		910FB3451E238D5B00C811E3 /* SearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3441E238D5B00C811E3 /* SearchCellView.swift */; };
+		910FB3471E238DA700C811E3 /* AdventureCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3461E238DA700C811E3 /* AdventureCellView.swift */; };
+		91582E9A1E1DE96800EB8654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91582E991E1DE96800EB8654 /* AppDelegate.swift */; };
+		91582E9F1E1DE96800EB8654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91582E9D1E1DE96800EB8654 /* Main.storyboard */; };
+		91582EA11E1DE96800EB8654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91582EA01E1DE96800EB8654 /* Assets.xcassets */; };
+		91582EA41E1DE96800EB8654 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91582EA21E1DE96800EB8654 /* LaunchScreen.storyboard */; };
+		91582EAF1E1DE96800EB8654 /* hobbouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91582EAE1E1DE96800EB8654 /* hobbouTests.swift */; };
+		91582EBA1E1DE96800EB8654 /* hobbouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91582EB91E1DE96800EB8654 /* hobbouUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		91582EAB1E1DE96800EB8654 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91582E8E1E1DE96800EB8654 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91582E951E1DE96800EB8654;
+			remoteInfo = hobbou;
+		};
+		91582EB61E1DE96800EB8654 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91582E8E1E1DE96800EB8654 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91582E951E1DE96800EB8654;
+			remoteInfo = hobbou;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02E55B32304DABA46F7564E9 /* Pods_hobbou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hobbou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54099834E826B30575E68DB3 /* Pods-hobbouUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbouUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hobbouUITests/Pods-hobbouUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B6001FEC647EE54A2A14D0A /* Pods-hobbouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hobbouTests/Pods-hobbouTests.debug.xcconfig"; sourceTree = "<group>"; };
+		79AE298953F90EB7AA414C00 /* Pods_hobbouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hobbouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		910FB2EF1E1DFFD500C811E3 /* MainPageTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageTabViewController.swift; sourceTree = "<group>"; };
+		910FB2F21E1E040B00C811E3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		910FB2F41E1E053000C811E3 /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
+		910FB2F61E1E058F00C811E3 /* HoBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoBViewController.swift; sourceTree = "<group>"; };
+		910FB2F81E1E0B4C00C811E3 /* AppMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenuController.swift; sourceTree = "<group>"; };
+		910FB3371E1E3E4E00C811E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		910FB3391E1E54CB00C811E3 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		910FB33C1E1E5D5200C811E3 /* HomeCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCellView.swift; sourceTree = "<group>"; };
+		910FB33E1E1FA6B600C811E3 /* BaseContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentView.swift; sourceTree = "<group>"; };
+		910FB3401E2340F100C811E3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		910FB3421E23468F00C811E3 /* AppSearchBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchBarController.swift; sourceTree = "<group>"; };
+		910FB3441E238D5B00C811E3 /* SearchCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCellView.swift; sourceTree = "<group>"; };
+		910FB3461E238DA700C811E3 /* AdventureCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureCellView.swift; sourceTree = "<group>"; };
+		91582E961E1DE96800EB8654 /* hobbou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hobbou.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91582E991E1DE96800EB8654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		91582E9E1E1DE96800EB8654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		91582EA01E1DE96800EB8654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		91582EA31E1DE96800EB8654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		91582EA51E1DE96800EB8654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91582EAA1E1DE96800EB8654 /* hobbouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hobbouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91582EAE1E1DE96800EB8654 /* hobbouTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hobbouTests.swift; sourceTree = "<group>"; };
+		91582EB01E1DE96800EB8654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91582EB51E1DE96800EB8654 /* hobbouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hobbouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91582EB91E1DE96800EB8654 /* hobbouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hobbouUITests.swift; sourceTree = "<group>"; };
+		91582EBB1E1DE96800EB8654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		991699EDFB457467C070FF6B /* Pods-hobbouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbouTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hobbouTests/Pods-hobbouTests.release.xcconfig"; sourceTree = "<group>"; };
+		9E1D07FA46BC18EE85E4D080 /* Pods-hobbou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbou.release.xcconfig"; path = "Pods/Target Support Files/Pods-hobbou/Pods-hobbou.release.xcconfig"; sourceTree = "<group>"; };
+		B7D587DA7E171E5635DD1317 /* Pods-hobbou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hobbou/Pods-hobbou.debug.xcconfig"; sourceTree = "<group>"; };
+		EDB66C61FDC6739A5245FB03 /* Pods_hobbouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hobbouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F95DEBFC5E152DC478352E6E /* Pods-hobbouUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbouUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hobbouUITests/Pods-hobbouUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		91582E931E1DE96800EB8654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04D472FDEA7670E00EAEECD2 /* Pods_hobbou.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91582EA71E1DE96800EB8654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BED4AAB4766A016B9745EEF /* Pods_hobbouTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91582EB21E1DE96800EB8654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				135B6626763E63A333A28884 /* Pods_hobbouUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02A50FB2382F39B546D666FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B7D587DA7E171E5635DD1317 /* Pods-hobbou.debug.xcconfig */,
+				9E1D07FA46BC18EE85E4D080 /* Pods-hobbou.release.xcconfig */,
+				5B6001FEC647EE54A2A14D0A /* Pods-hobbouTests.debug.xcconfig */,
+				991699EDFB457467C070FF6B /* Pods-hobbouTests.release.xcconfig */,
+				54099834E826B30575E68DB3 /* Pods-hobbouUITests.debug.xcconfig */,
+				F95DEBFC5E152DC478352E6E /* Pods-hobbouUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		859A762E1FBF7C8A8A7D914D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02E55B32304DABA46F7564E9 /* Pods_hobbou.framework */,
+				EDB66C61FDC6739A5245FB03 /* Pods_hobbouTests.framework */,
+				79AE298953F90EB7AA414C00 /* Pods_hobbouUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		910FB2F11E1DFFDE00C811E3 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				910FB2EF1E1DFFD500C811E3 /* MainPageTabViewController.swift */,
+				910FB2F21E1E040B00C811E3 /* HomeViewController.swift */,
+				910FB2F41E1E053000C811E3 /* AdventureViewController.swift */,
+				910FB2F61E1E058F00C811E3 /* HoBViewController.swift */,
+				910FB3401E2340F100C811E3 /* SearchViewController.swift */,
+				910FB2F81E1E0B4C00C811E3 /* AppMenuController.swift */,
+				910FB3391E1E54CB00C811E3 /* MainNavigationController.swift */,
+				910FB3421E23468F00C811E3 /* AppSearchBarController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		910FB3361E1E3E3C00C811E3 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				910FB3371E1E3E4E00C811E3 /* Extensions.swift */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
+		910FB33B1E1E5CF900C811E3 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				910FB33C1E1E5D5200C811E3 /* HomeCellView.swift */,
+				910FB33E1E1FA6B600C811E3 /* BaseContentView.swift */,
+				910FB3441E238D5B00C811E3 /* SearchCellView.swift */,
+				910FB3461E238DA700C811E3 /* AdventureCellView.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		91582E8D1E1DE96800EB8654 = {
+			isa = PBXGroup;
+			children = (
+				91582E981E1DE96800EB8654 /* hobbou */,
+				91582EAD1E1DE96800EB8654 /* hobbouTests */,
+				91582EB81E1DE96800EB8654 /* hobbouUITests */,
+				91582E971E1DE96800EB8654 /* Products */,
+				02A50FB2382F39B546D666FE /* Pods */,
+				859A762E1FBF7C8A8A7D914D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		91582E971E1DE96800EB8654 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91582E961E1DE96800EB8654 /* hobbou.app */,
+				91582EAA1E1DE96800EB8654 /* hobbouTests.xctest */,
+				91582EB51E1DE96800EB8654 /* hobbouUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91582E981E1DE96800EB8654 /* hobbou */ = {
+			isa = PBXGroup;
+			children = (
+				910FB33B1E1E5CF900C811E3 /* views */,
+				910FB2F11E1DFFDE00C811E3 /* controllers */,
+				910FB3361E1E3E3C00C811E3 /* helpers */,
+				91582E991E1DE96800EB8654 /* AppDelegate.swift */,
+				91582E9D1E1DE96800EB8654 /* Main.storyboard */,
+				91582EA01E1DE96800EB8654 /* Assets.xcassets */,
+				91582EA21E1DE96800EB8654 /* LaunchScreen.storyboard */,
+				91582EA51E1DE96800EB8654 /* Info.plist */,
+			);
+			path = hobbou;
+			sourceTree = "<group>";
+		};
+		91582EAD1E1DE96800EB8654 /* hobbouTests */ = {
+			isa = PBXGroup;
+			children = (
+				91582EAE1E1DE96800EB8654 /* hobbouTests.swift */,
+				91582EB01E1DE96800EB8654 /* Info.plist */,
+			);
+			path = hobbouTests;
+			sourceTree = "<group>";
+		};
+		91582EB81E1DE96800EB8654 /* hobbouUITests */ = {
+			isa = PBXGroup;
+			children = (
+				91582EB91E1DE96800EB8654 /* hobbouUITests.swift */,
+				91582EBB1E1DE96800EB8654 /* Info.plist */,
+			);
+			path = hobbouUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		91582E951E1DE96800EB8654 /* hobbou */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91582EBE1E1DE96800EB8654 /* Build configuration list for PBXNativeTarget "hobbou" */;
+			buildPhases = (
+				EFCF24CA606BCE23D0AB2B50 /* [CP] Check Pods Manifest.lock */,
+				91582E921E1DE96800EB8654 /* Sources */,
+				91582E931E1DE96800EB8654 /* Frameworks */,
+				91582E941E1DE96800EB8654 /* Resources */,
+				96C8D49FF485F95D7E513CAF /* [CP] Embed Pods Frameworks */,
+				8835578301CD03A1E87F2893 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hobbou;
+			productName = hobbou;
+			productReference = 91582E961E1DE96800EB8654 /* hobbou.app */;
+			productType = "com.apple.product-type.application";
+		};
+		91582EA91E1DE96800EB8654 /* hobbouTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91582EC11E1DE96800EB8654 /* Build configuration list for PBXNativeTarget "hobbouTests" */;
+			buildPhases = (
+				9C3356A207218D6193200DD2 /* [CP] Check Pods Manifest.lock */,
+				91582EA61E1DE96800EB8654 /* Sources */,
+				91582EA71E1DE96800EB8654 /* Frameworks */,
+				91582EA81E1DE96800EB8654 /* Resources */,
+				4CD25FE0FC74ABE86A5E7712 /* [CP] Embed Pods Frameworks */,
+				F330ED01A507A0283D052198 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91582EAC1E1DE96800EB8654 /* PBXTargetDependency */,
+			);
+			name = hobbouTests;
+			productName = hobbouTests;
+			productReference = 91582EAA1E1DE96800EB8654 /* hobbouTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		91582EB41E1DE96800EB8654 /* hobbouUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91582EC41E1DE96800EB8654 /* Build configuration list for PBXNativeTarget "hobbouUITests" */;
+			buildPhases = (
+				EBDF3959DC6F244146DF4E81 /* [CP] Check Pods Manifest.lock */,
+				91582EB11E1DE96800EB8654 /* Sources */,
+				91582EB21E1DE96800EB8654 /* Frameworks */,
+				91582EB31E1DE96800EB8654 /* Resources */,
+				59DA5CE438A67DF95DB68C12 /* [CP] Embed Pods Frameworks */,
+				B002261478F5340707827B12 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91582EB71E1DE96800EB8654 /* PBXTargetDependency */,
+			);
+			name = hobbouUITests;
+			productName = hobbouUITests;
+			productReference = 91582EB51E1DE96800EB8654 /* hobbouUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91582E8E1E1DE96800EB8654 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Hans Yonathan";
+				TargetAttributes = {
+					91582E951E1DE96800EB8654 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SWY9LGTPG2;
+						ProvisioningStyle = Automatic;
+					};
+					91582EA91E1DE96800EB8654 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SWY9LGTPG2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 91582E951E1DE96800EB8654;
+					};
+					91582EB41E1DE96800EB8654 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = SWY9LGTPG2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 91582E951E1DE96800EB8654;
+					};
+				};
+			};
+			buildConfigurationList = 91582E911E1DE96800EB8654 /* Build configuration list for PBXProject "hobbou" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 91582E8D1E1DE96800EB8654;
+			productRefGroup = 91582E971E1DE96800EB8654 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				91582E951E1DE96800EB8654 /* hobbou */,
+				91582EA91E1DE96800EB8654 /* hobbouTests */,
+				91582EB41E1DE96800EB8654 /* hobbouUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		91582E941E1DE96800EB8654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91582EA41E1DE96800EB8654 /* LaunchScreen.storyboard in Resources */,
+				91582EA11E1DE96800EB8654 /* Assets.xcassets in Resources */,
+				91582E9F1E1DE96800EB8654 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91582EA81E1DE96800EB8654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91582EB31E1DE96800EB8654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CD25FE0FC74ABE86A5E7712 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hobbouTests/Pods-hobbouTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59DA5CE438A67DF95DB68C12 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hobbouUITests/Pods-hobbouUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8835578301CD03A1E87F2893 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hobbou/Pods-hobbou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96C8D49FF485F95D7E513CAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hobbou/Pods-hobbou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C3356A207218D6193200DD2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B002261478F5340707827B12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hobbouUITests/Pods-hobbouUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBDF3959DC6F244146DF4E81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EFCF24CA606BCE23D0AB2B50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F330ED01A507A0283D052198 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hobbouTests/Pods-hobbouTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91582E921E1DE96800EB8654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				910FB33A1E1E54CB00C811E3 /* MainNavigationController.swift in Sources */,
+				910FB3411E2340F100C811E3 /* SearchViewController.swift in Sources */,
+				910FB33F1E1FA6B600C811E3 /* BaseContentView.swift in Sources */,
+				910FB2F01E1DFFD500C811E3 /* MainPageTabViewController.swift in Sources */,
+				910FB2F51E1E053000C811E3 /* AdventureViewController.swift in Sources */,
+				910FB3451E238D5B00C811E3 /* SearchCellView.swift in Sources */,
+				91582E9A1E1DE96800EB8654 /* AppDelegate.swift in Sources */,
+				910FB2F91E1E0B4C00C811E3 /* AppMenuController.swift in Sources */,
+				910FB3381E1E3E4E00C811E3 /* Extensions.swift in Sources */,
+				910FB3471E238DA700C811E3 /* AdventureCellView.swift in Sources */,
+				910FB2F31E1E040B00C811E3 /* HomeViewController.swift in Sources */,
+				910FB2F71E1E058F00C811E3 /* HoBViewController.swift in Sources */,
+				910FB33D1E1E5D5200C811E3 /* HomeCellView.swift in Sources */,
+				910FB3431E23468F00C811E3 /* AppSearchBarController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91582EA61E1DE96800EB8654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91582EAF1E1DE96800EB8654 /* hobbouTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91582EB11E1DE96800EB8654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91582EBA1E1DE96800EB8654 /* hobbouUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		91582EAC1E1DE96800EB8654 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91582E951E1DE96800EB8654 /* hobbou */;
+			targetProxy = 91582EAB1E1DE96800EB8654 /* PBXContainerItemProxy */;
+		};
+		91582EB71E1DE96800EB8654 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91582E951E1DE96800EB8654 /* hobbou */;
+			targetProxy = 91582EB61E1DE96800EB8654 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		91582E9D1E1DE96800EB8654 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91582E9E1E1DE96800EB8654 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		91582EA21E1DE96800EB8654 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91582EA31E1DE96800EB8654 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		91582EBC1E1DE96800EB8654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		91582EBD1E1DE96800EB8654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		91582EBF1E1DE96800EB8654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7D587DA7E171E5635DD1317 /* Pods-hobbou.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SWY9LGTPG2;
+				INFOPLIST_FILE = hobbou/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bou.hobbou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		91582EC01E1DE96800EB8654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E1D07FA46BC18EE85E4D080 /* Pods-hobbou.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SWY9LGTPG2;
+				INFOPLIST_FILE = hobbou/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bou.hobbou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		91582EC21E1DE96800EB8654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6001FEC647EE54A2A14D0A /* Pods-hobbouTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SWY9LGTPG2;
+				INFOPLIST_FILE = hobbouTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bou.hobbouTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hobbou.app/hobbou";
+			};
+			name = Debug;
+		};
+		91582EC31E1DE96800EB8654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 991699EDFB457467C070FF6B /* Pods-hobbouTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SWY9LGTPG2;
+				INFOPLIST_FILE = hobbouTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bou.hobbouTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hobbou.app/hobbou";
+			};
+			name = Release;
+		};
+		91582EC51E1DE96800EB8654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54099834E826B30575E68DB3 /* Pods-hobbouUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = SWY9LGTPG2;
+				INFOPLIST_FILE = hobbouUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bou.hobbouUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = hobbou;
+			};
+			name = Debug;
+		};
+		91582EC61E1DE96800EB8654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F95DEBFC5E152DC478352E6E /* Pods-hobbouUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = SWY9LGTPG2;
+				INFOPLIST_FILE = hobbouUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bou.hobbouUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = hobbou;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		91582E911E1DE96800EB8654 /* Build configuration list for PBXProject "hobbou" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91582EBC1E1DE96800EB8654 /* Debug */,
+				91582EBD1E1DE96800EB8654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91582EBE1E1DE96800EB8654 /* Build configuration list for PBXNativeTarget "hobbou" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91582EBF1E1DE96800EB8654 /* Debug */,
+				91582EC01E1DE96800EB8654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91582EC11E1DE96800EB8654 /* Build configuration list for PBXNativeTarget "hobbouTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91582EC21E1DE96800EB8654 /* Debug */,
+				91582EC31E1DE96800EB8654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91582EC41E1DE96800EB8654 /* Build configuration list for PBXNativeTarget "hobbouUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91582EC51E1DE96800EB8654 /* Debug */,
+				91582EC61E1DE96800EB8654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 91582E8E1E1DE96800EB8654 /* Project object */;
+}
