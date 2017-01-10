@@ -13,7 +13,7 @@ class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [AppMenuController(rootViewController:
-            MainPageTabViewController(viewControllers: [HomeViewController(), AdventureViewController(), HoBViewController()], selectedIndex: 0))]
+            MainPageTabViewController(viewControllers: [HomeViewController(), AdventureViewController(), HoBViewController()], selectedIndex: 1))]
         // Do any additional setup after loading the view.
 
     }

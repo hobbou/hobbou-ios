@@ -52,10 +52,10 @@ class AppMenuController: MenuController {
         let searchBarButtonItem = UIBarButtonItem(customView: searchButton)
         
         let moreButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        let moreImage = UIImage(named: "Menu 2 Filled-100")?.withRenderingMode(.alwaysTemplate)
+        let moreImage = UIImage(named: "Circled User Male Filled-100")?.withRenderingMode(.alwaysTemplate)
         moreButton.setBackgroundImage(moreImage, for: .normal)
         moreButton.tintColor = .white
-        moreButton.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
+        moreButton.addTarget(self, action: #selector(handleProfile), for: .touchUpInside)
         moreButton.showsTouchWhenHighlighted = true
         let moreBarButtonItem = UIBarButtonItem(customView: moreButton)
 
@@ -72,7 +72,7 @@ class AppMenuController: MenuController {
         present(appSearchBarController, animated: true, completion: nil)
     }
     
-    func handleMore(){
+    func handleProfile(){
         print("handleMore")
     }
     

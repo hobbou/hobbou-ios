@@ -237,7 +237,6 @@ class RecomendedBaseListCell: BaseCell, UICollectionViewDataSource, UICollection
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: containerHeader, attribute: .right, multiplier: 1, constant: -44))
         //height constraint
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44))
-
         
         containerHeader.addSubview(moreButton)
         //top constraint

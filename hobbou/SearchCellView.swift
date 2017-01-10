@@ -9,7 +9,7 @@
 import UIKit
 import Material
 
-class SearchCell: BaseCell {
+class SeparatedListContentBaseCell: BaseCell {
     
     let searchContentView: UIView = {
         let view = UIView()
@@ -42,6 +42,17 @@ class SearchCell: BaseCell {
         return button
     }()
     
+    let lengthLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "05:00"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 6)
+        label.textAlignment = .center
+        label.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        return label
+    }()
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor.purple
@@ -69,14 +80,24 @@ class SearchCell: BaseCell {
         searchContentView.addSubview(subtitleLabel)
         searchContentView.addSubview(moreButton)
         
+        searchContentView.addSubview(lengthLabel)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: -4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 11))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 22))
+        
         //top constraint
         addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .top, relatedBy: .equal, toItem: searchContentView, attribute: .top, multiplier: 1, constant: 0))
         //left constraint
         addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .left, relatedBy: .equal, toItem: searchContentView, attribute: .left, multiplier: 1, constant: 0))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 77))
+        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 154))
         //width constraint
-        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 77))
+        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 154))
         
         
         //top constraint
@@ -109,6 +130,39 @@ class SearchCell: BaseCell {
     
     func handleMore(){
         print("handlemore")
+    }
+    
+}
+
+class SearchCell: SeparatedListContentBaseCell {
+    
+}
+
+class HoBCell: SeparatedListContentBaseCell {
+    
+    let rankLabel: UILabel = {
+        let label = UILabel()
+        label.text = "#1"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 6)
+        label.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        return label
+    }()
+    
+    override func setupViews() {
+        super.setupViews()
+        addSubview(rankLabel)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: rankLabel, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .top, multiplier: 1, constant: 2))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: rankLabel, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 2))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: rankLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 22))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: rankLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 22))
+        
     }
     
 }

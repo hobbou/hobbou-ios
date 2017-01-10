@@ -59,6 +59,12 @@ class MainPageTabViewController: PageTabBarController {
             if let viewController = viewController as? HomeViewController{
                 viewController.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: true)
             }
+            if let viewController = viewController as? AdventureViewController{
+                viewController.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: true)
+            }
+            if let viewController = viewController as? HoBViewController{
+                viewController.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: true)
+            }
         }
     }
         
@@ -88,8 +94,9 @@ class MainPageTabViewController: PageTabBarController {
 extension MainPageTabViewController {
     
     fileprivate func preparePageTabBar() {
-        pageTabBar.lineColor = Color.blueGrey.base
+        pageTabBar.lineColor = UIColor(red: 255/255, green: 0/255, blue: 19/255, alpha: 1)
         pageTabBar.dividerColor = Color.blueGrey.lighten5
+        pageTabBar.height = 50
     }
     
     fileprivate func prepareAddButton() {
