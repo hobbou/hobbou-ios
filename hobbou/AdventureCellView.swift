@@ -175,7 +175,19 @@ class FeaturedListCell: BaseCell, UICollectionViewDataSource, UICollectionViewDe
     
 }
 
-class RecomendedListCell: BaseCell {
+class RecomendedBaseListCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    let recomendedCellId = "recomendedCellId"
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.delegate = self
+        cv.dataSource = self
+        cv.backgroundColor = .clear
+        cv.isScrollEnabled = false
+        return cv
+    }()
     
     let containerHeader: UIView = {
         let view = UIView()
@@ -189,59 +201,103 @@ class RecomendedListCell: BaseCell {
         return view
     }()
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = NSLocalizedString("Recomended", comment: "for recomendedlist")
+        label.backgroundColor = .orange
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var moreButton: UIButton = {
+        let button = UIButton(type: .system)
+        let bookmarkImage = UIImage(named: "Menu 2 Filled-100")
+        button.setImage(bookmarkImage, for: .normal)
+        button.tintColor = .lightGray
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
+        //button.backgroundColor = .white
+        return button
+    }()
+    
     override func setupViews() {
         addSubview(containerHeader)
         addSubview(containerContent)
         addConstraint(format: "H:|[v0]|", views: containerHeader)
         addConstraint(format: "H:|[v0]|", views: containerContent)
         addConstraint(format: "V:|[v0(44)][v1]|", views: containerHeader, containerContent)
+        
+        containerHeader.addSubview(titleLabel)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: containerHeader, attribute: .top, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: containerHeader, attribute: .left, multiplier: 1, constant: 4))
+        //right constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: containerHeader, attribute: .right, multiplier: 1, constant: -44))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44))
+
+        
+        containerHeader.addSubview(moreButton)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .top, relatedBy: .equal, toItem: containerHeader, attribute: .top, multiplier: 1, constant: 0))
+        //right constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: containerHeader, attribute: .right, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 44))
+        
+        containerContent.addSubview(collectionView)
+        addConstraint(format: "H:|[v0]|", views: collectionView)
+        addConstraint(format: "V:|[v0]|", views: collectionView)
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.minimumLineSpacing = 0
+            flowLayout.minimumInteritemSpacing = 0
+        }
+        collectionView.register(ThreeDimensionContentBaseCell.self, forCellWithReuseIdentifier: recomendedCellId)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: recomendedCellId, for: indexPath) as! ThreeDimensionContentBaseCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.width/3, height: frame.width/3)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func handleMore(){
+        print("handlemore")
+    }
+    
 }
 
-class NewListCell: BaseCell {
-    
-    let containerHeader: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        return view
-    }()
-    
-    let containerContent: UIView = {
-        let view = UIView()
-        view.backgroundColor = .purple
-        return view
-    }()
+class NewListCell: RecomendedBaseListCell {
     
     override func setupViews() {
-        addSubview(containerHeader)
-        addSubview(containerContent)
-        addConstraint(format: "H:|[v0]|", views: containerHeader)
-        addConstraint(format: "H:|[v0]|", views: containerContent)
-        addConstraint(format: "V:|[v0(44)][v1]|", views: containerHeader, containerContent)
+        super.setupViews()
+        titleLabel.text = "New"
     }
+    
 }
 
-class RandomListCell: BaseCell {
-    
-    let containerHeader: UIView = {
-        let view = UIView()
-        view.backgroundColor = .green
-        return view
-    }()
-    
-    let containerContent: UIView = {
-        let view = UIView()
-        view.backgroundColor = .purple
-        return view
-    }()
+class RandomListCell: RecomendedBaseListCell {
     
     override func setupViews() {
-        addSubview(containerHeader)
-        addSubview(containerContent)
-        addConstraint(format: "H:|[v0]|", views: containerHeader)
-        addConstraint(format: "H:|[v0]|", views: containerContent)
-        addConstraint(format: "V:|[v0(44)][v1]|", views: containerHeader, containerContent)
+        super.setupViews()
+        titleLabel.text = "Random"
     }
+    
 }
 
 class CategoryListCell: BaseCell {
@@ -283,10 +339,294 @@ class FeaturedCell: BaseCell {
         return imageView
     }()
     
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.alpha = 0
+        return view
+    }()
+
+    let userProfileImageView: CustomImageView = {
+        let imageView = CustomImageView()
+        imageView.backgroundColor = UIColor.green
+        imageView.layer.cornerRadius = 22
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.purple
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.lightGray
+        return label
+    }()
+    
+    let lengthLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "05:00"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 12)
+        label.textAlignment = .center
+        label.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        return label
+    }()
+    
+    lazy var saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        let bookmarkImage = UIImage(named: "Plus Math Filled-100")
+        button.setImage(bookmarkImage, for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+        return button
+    }()
+    
     override func setupViews() {
         addSubview(thumbnailImageView)
         addConstraint(format: "H:|[v0]|", views: thumbnailImageView)
         addConstraint(format: "V:|[v0]|", views: thumbnailImageView)
+
+        addSubview(containerView)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .top, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: thumbnailImageView, attribute: .height, multiplier: 1, constant: 0))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal, toItem: thumbnailImageView, attribute: .width, multiplier: 1, constant: 0))
+        
+        addSubview(lengthLabel)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: -4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 22))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 44))
+        
+        containerView.addSubview(userProfileImageView)
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(subtitleLabel)
+        containerView.addSubview(saveButton)
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .top, multiplier: 1, constant: 8))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 8))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 44))
+        
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .top, multiplier: 1, constant: 8))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
+        //right constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: -8))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
+                
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 44))
+        
+    }
+    
+    func handleSave(){
+        print("save")
+    }
+    
+    func hideContentContainer(){
+        let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {
+                self.containerView.alpha = 0
+            }, completion: { (completed) in
+                //self.containerView.alpha = 0
+            })
+        })
+    }
+    
+    func showContentContainer(){
+        UIView.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {
+            self.containerView.alpha = 1
+        }) { (completed) in
+            //self.containerView.isHidden = true
+            //self.containerView.alpha = 1
+        }
+    }
+    
+}
+
+class ThreeDimensionContentBaseCell: BaseCell {
+
+    let thumbnailImageView: CustomImageView = {
+        let imageView = CustomImageView()
+        imageView.backgroundColor = UIColor.blue
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.purple
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.lightGray
+        label.sizeToFit()
+        return label
+    }()
+    
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.alpha = 0
+        return view
+    }()
+    
+    let lengthLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "05:00"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 6)
+        label.textAlignment = .center
+        label.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
+        return label
+    }()
+    
+    lazy var saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        let bookmarkImage = UIImage(named: "Plus Math Filled-100")
+        button.setImage(bookmarkImage, for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+        return button
+    }()
+    
+    override func setupViews() {
+        layer.borderWidth = 0.3
+        addSubview(thumbnailImageView)
+        addConstraint(format: "H:|[v0]|", views: thumbnailImageView)
+        addConstraint(format: "V:|[v0]|", views: thumbnailImageView)
+        
+        addSubview(containerView)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .top, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: thumbnailImageView, attribute: .height, multiplier: 1, constant: 0))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal, toItem: thumbnailImageView, attribute: .width, multiplier: 1, constant: 0))
+        
+        addSubview(lengthLabel)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: -4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 11))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 22))
+        
+        containerView.addSubview(titleLabel)
+        containerView.addSubview(subtitleLabel)
+        containerView.addSubview(saveButton)
+                
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .top, multiplier: 1, constant: 4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 4))
+        //right constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: thumbnailImageView, attribute: .right, multiplier: 1, constant: -4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 10))
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 2))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 10))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -2))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 2))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 22))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: saveButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 22))
+
+    }
+    
+    func handleSave(){
+        print("handlesave")
+    }
+    
+    func hideContentContainer(){
+        let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime, execute: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {
+                self.containerView.alpha = 0
+            }, completion: { (completed) in
+                //self.containerView.alpha = 0
+            })
+        })
+    }
+    
+    func showContentContainer(){
+        UIView.animate(withDuration: 0.5, delay: 0, options: .transitionCrossDissolve, animations: {
+            self.containerView.alpha = 1
+        }) { (completed) in
+            //self.containerView.isHidden = true
+            //self.containerView.alpha = 1
+        }
     }
     
 }

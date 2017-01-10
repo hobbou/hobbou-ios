@@ -16,11 +16,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
     let recomendedCellId = "recomendedCellId"
     let newCellId = "newCellId"
     let randomCellId = "randomCellId"
-
-    let pageViewController : FeaturedPageViewController = {
-        let viewController = FeaturedPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        return viewController
-    }()
+    private var lastContentOffset: CGFloat = 0
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -103,7 +99,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
         
         //collectionView.register(CategorySelectionCell.self, forCellWithReuseIdentifier: categorySelectionCellId)
         collectionView.register(FeaturedListCell.self, forCellWithReuseIdentifier: featureCellId)
-        collectionView.register(RecomendedListCell.self, forCellWithReuseIdentifier: recomendedCellId)
+        collectionView.register(RecomendedBaseListCell.self, forCellWithReuseIdentifier: recomendedCellId)
         collectionView.register(NewListCell.self, forCellWithReuseIdentifier: newCellId)
         collectionView.register(RandomListCell.self, forCellWithReuseIdentifier: randomCellId)
         
@@ -139,7 +135,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
 //            cell = collectionView.dequeueReusableCell(withReuseIdentifier: categorySelectionCellId, for: indexPath) as! CategorySelectionCell
 //        }
         if indexPath.item == 1 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: recomendedCellId, for: indexPath) as! RecomendedListCell
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: recomendedCellId, for: indexPath) as! RecomendedBaseListCell
         }else if indexPath.item == 2 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: newCellId, for: indexPath) as! NewListCell
         }else if indexPath.item == 3 {
@@ -173,11 +169,105 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
 //        }
         
         let height = (view.frame.width - 16 - 16) * 9 / 16
-        var size = CGSize(width: view.frame.width, height: (height + 16 + 68)*2)
+        var size = CGSize(width: view.frame.width, height: view.frame.width+44)
         if indexPath.item == 0 {
             size = CGSize(width: view.frame.width, height: (height + 16 + 68))
         }
         return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if let listCell = cell as? RecomendedBaseListCell {
+            for cell in listCell.collectionView.visibleCells{
+                if let cell = cell as? ThreeDimensionContentBaseCell {
+                    cell.showContentContainer()
+                }
+            }
+        }
+        if let listCell = cell as? FeaturedListCell {
+            for cell in listCell.collectionView.visibleCells{
+                if let cell = cell as? FeaturedCell {
+                    cell.showContentContainer()
+                }
+            }
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("begin")
+        for cell in collectionView.visibleCells {
+            if let listCell = cell as? RecomendedBaseListCell {
+                for cell in listCell.collectionView.visibleCells{
+                    if let cell = cell as? ThreeDimensionContentBaseCell {
+                        cell.showContentContainer()
+                    }
+                }
+            }
+            if let listCell = cell as? FeaturedListCell {
+                for cell in listCell.collectionView.visibleCells{
+                    if let cell = cell as? FeaturedCell {
+                        cell.showContentContainer()
+                    }
+                }
+            }
+        }
+        
+        let mainPageTabViewController = pageTabBarController as! MainPageTabViewController
+        if (self.lastContentOffset > scrollView.contentOffset.y) {
+            //move down
+            mainPageTabViewController.hideFloatingMenu()
+        }
+        else if (self.lastContentOffset < scrollView.contentOffset.y) {
+            //move up
+            mainPageTabViewController.showFloatingMenu()
+        }
+        
+        // update the new position acquired
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("end")
+        for cell in collectionView.visibleCells {
+            if let listCell = cell as? RecomendedBaseListCell {
+                for cell in listCell.collectionView.visibleCells{
+                    if let cell = cell as? ThreeDimensionContentBaseCell {
+                        cell.hideContentContainer()
+                    }
+                }
+            }
+            if let listCell = cell as? FeaturedListCell {
+                for cell in listCell.collectionView.visibleCells{
+                    if let cell = cell as? FeaturedCell {
+                        cell.hideContentContainer()
+                    }
+                }
+            }
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate{
+            print("end")
+            for cell in collectionView.visibleCells {
+                if let listCell = cell as? RecomendedBaseListCell {
+                    for cell in listCell.collectionView.visibleCells{
+                        if let cell = cell as? ThreeDimensionContentBaseCell {
+                            cell.hideContentContainer()
+                        }
+                    }
+                }
+                if let listCell = cell as? FeaturedListCell {
+                    for cell in listCell.collectionView.visibleCells{
+                        if let cell = cell as? FeaturedCell {
+                            cell.hideContentContainer()
+                        }
+                    }
+                }
+            }
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -192,120 +282,4 @@ extension AdventureViewController {
         pageTabBarItem.title = NSLocalizedString("Adventure", comment: "for adventureviewcontroller")
         pageTabBarItem.titleColor = Color.blueGrey.base
     }
-}
-
-class FeaturedPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate{
-    
-    let loginPageFrames: [FeaturedPageFrame] = {
-        return [
-            FeaturedPageFrame(message: NSLocalizedString("Motivated others, Motivated you", comment: "for loginframe"), imageName: "screenshot1"),
-            FeaturedPageFrame(message: NSLocalizedString("Vent your feeling and got motivated word from other", comment: "for loginframe"), imageName: "Facebook-100"),
-            FeaturedPageFrame(message: NSLocalizedString("Listen and answer other people problem", comment: "for loginframe"), imageName: "Gold Bars-100"),
-            FeaturedPageFrame(message: NSLocalizedString("Mark the words that you like as GoldWords", comment: "for loginframe"), imageName: "Gold Bars Filled-100")
-        ]
-    }()
-    
-    lazy var pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.pageIndicatorTintColor = .lightGray
-        pc.currentPageIndicatorTintColor = UIColor(red: 218/255, green: 165/255, blue: 32/255, alpha: 1)
-        pc.numberOfPages = self.loginPageFrames.count
-        pc.addTarget(self, action: #selector(handlePageControlChange), for: .valueChanged)
-        return pc
-    }()
-    
-    func handlePageControlChange(){
-        print(pageControl.currentPage)
-        let frameViewController = FeaturedFrameViewController()
-        frameViewController.loginFramePage = loginPageFrames[pageControl.currentPage]
-        setViewControllers([frameViewController], direction: .forward, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        dataSource = self
-        delegate = self
-        let frameViewController = FeaturedFrameViewController()
-        frameViewController.loginFramePage = loginPageFrames.first
-        let viewControllers = [frameViewController]
-        setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
-        view.backgroundColor = .clear
-        view.addSubview(pageControl)
-        view.addConstraint(format: "H:|-100-[v0]-100-|", views: pageControl)
-        view.addConstraint(format: "V:[v0(30)]|", views: pageControl)
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let currentLoginFramePage = (viewController as! FeaturedFrameViewController).loginFramePage
-        let currentIndex = loginPageFrames.index{$0.imageName == currentLoginFramePage?.imageName}
-        if currentIndex! < loginPageFrames.count - 1 {
-            let frameViewController = FeaturedFrameViewController()
-            frameViewController.loginFramePage = loginPageFrames[currentIndex! + 1]
-            return frameViewController
-        }
-        return nil
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let currentLoginFramePage = (viewController as! FeaturedFrameViewController).loginFramePage
-        let currentIndex = loginPageFrames.index{$0.imageName == currentLoginFramePage?.imageName}
-        if currentIndex! > 0 {
-            let frameViewController = FeaturedFrameViewController()
-            frameViewController.loginFramePage = loginPageFrames[currentIndex! - 1]
-            return frameViewController
-        }
-        return nil
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let currentLoginFramePage = (viewControllers?.first as! FeaturedFrameViewController).loginFramePage
-        let currentIndex = loginPageFrames.index{$0.imageName == currentLoginFramePage?.imageName}
-        pageControl.currentPage = currentIndex!
-    }
-    
-}
-
-
-class FeaturedFrameViewController: UIViewController {
-    
-    var loginFramePage: FeaturedPageFrame? {
-        didSet {
-            imageView.image = UIImage(named: (loginFramePage?.imageName)!)
-            titleLabel.text = loginFramePage?.message
-        }
-    }
-    
-    let imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = UIImage(named: "facebook-square")
-        return iv
-    }()
-    
-    let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "Discover Title in here and find something interesting later.."
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 2
-        titleLabel.textColor = UIColor(red: 218/255, green: 165/255, blue: 32/255, alpha: 1)
-        titleLabel.font = .boldSystemFont(ofSize: 16)
-        return titleLabel
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .clear
-        view.addSubview(titleLabel)
-        view.addSubview(imageView)
-        view.addConstraint(format: "H:|-40-[v0]-40-|", views: imageView)
-        view.addConstraint(format: "H:|-40-[v0]-40-|", views: titleLabel)
-        view.addConstraint(format: "V:|-10-[v0]-10-[v1]-16-|", views: titleLabel, imageView)
-    }
-    
-}
-
-struct FeaturedPageFrame {
-    let message: String!
-    let imageName: String!
 }

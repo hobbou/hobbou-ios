@@ -62,13 +62,12 @@ class BaseContentView: UIView {
         return label
     }()
     
-    let subtitleTextView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = UIColor.red
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
-        textView.textColor = UIColor.lightGray
-        return textView
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.lightGray
+        return label
     }()
     
     let containerView: UIView = {
@@ -147,7 +146,7 @@ class BaseContentView: UIView {
         
         containerView.addSubview(userProfileImageView)
         containerView.addSubview(titleLabel)
-        containerView.addSubview(subtitleTextView)
+        containerView.addSubview(subtitleLabel)
         containerView.addSubview(moreButton)
         containerView.addSubview(saveButton)
         
@@ -169,13 +168,13 @@ class BaseContentView: UIView {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
         //left constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         //width constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
         
         //top constraint
         addConstraint(NSLayoutConstraint(item: moreButton, attribute: .top, relatedBy: .equal, toItem: userProfileImageView, attribute: .top, multiplier: 1, constant: 0))

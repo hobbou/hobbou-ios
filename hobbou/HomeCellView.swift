@@ -27,6 +27,7 @@ class BaseCell: UICollectionViewCell {
 }
 
 class ShareCommentCell: BaseCommentCell {
+    
     override func setupViews() {
         addSubview(commentContainerView)
         addSubview(separatorView)
@@ -35,7 +36,7 @@ class ShareCommentCell: BaseCommentCell {
         addConstraint(format: "V:|[v0]-2-[v1(1)]|", views: commentContainerView, separatorView)
         commentContainerView.addSubview(userProfileImageView)
         commentContainerView.addSubview(descriptionLabel)
-        commentContainerView.addSubview(subtitleTextView)
+        commentContainerView.addSubview(subtitleLabel)
         
         //top constraint
         addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .top, relatedBy: .equal, toItem: commentContainerView, attribute: .top, multiplier: 1, constant: 8))
@@ -56,13 +57,13 @@ class ShareCommentCell: BaseCommentCell {
         addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: descriptionLabel, attribute: .bottom, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: descriptionLabel, attribute: .bottom, multiplier: 1, constant: 4))
         //left constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 4))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
         //width constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .width, relatedBy: .equal, toItem: descriptionLabel, attribute: .width, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: descriptionLabel, attribute: .width, multiplier: 1, constant: 0))
     }
     
 }
@@ -77,7 +78,7 @@ class PostCommentCell: BaseCommentCell {
         addConstraint(format: "V:|[v0]-2-[v1(1)]|", views: commentContainerView, separatorView)
         commentContainerView.addSubview(userProfileImageView)
         commentContainerView.addSubview(descriptionLabel)
-        commentContainerView.addSubview(subtitleTextView)
+        commentContainerView.addSubview(subtitleLabel)
         
         //top constraint
         addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .top, relatedBy: .equal, toItem: commentContainerView, attribute: .top, multiplier: 1, constant: 8))
@@ -98,13 +99,13 @@ class PostCommentCell: BaseCommentCell {
         addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .top, relatedBy: .equal, toItem: descriptionLabel, attribute: .bottom, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: descriptionLabel, attribute: .bottom, multiplier: 1, constant: 4))
         //left constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 4))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
         //width constraint
-        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .width, relatedBy: .equal, toItem: descriptionLabel, attribute: .width, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: descriptionLabel, attribute: .width, multiplier: 1, constant: 0))
     }
     
 }
@@ -127,13 +128,12 @@ class BaseCommentCell: BaseCell {
         return label
     }()
     
-    let subtitleTextView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = UIColor.red
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
-        textView.textColor = UIColor.lightGray
-        return textView
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.lightGray
+        return label
     }()
     
     let commentContainerView: UIView = {
@@ -172,13 +172,12 @@ class ShareCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate,
         return label
     }()
     
-    let subtitleTextView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = UIColor.red
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
-        textView.textColor = UIColor.lightGray
-        return textView
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.lightGray
+        return label
     }()
 
     let userProfileImageView: CustomImageView = {
@@ -238,16 +237,16 @@ class ShareCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate,
         addConstraint(format: "V:|-4-[v0(44)]", views: userProfileImageView)
         
         containerRight.addSubview(titleLabel)
-        containerRight.addSubview(subtitleTextView)
+        containerRight.addSubview(subtitleLabel)
         containerRight.addSubview(baseContentView)
         containerRight.addSubview(commentCollectionView)
         
         addConstraint(format: "H:|[v0]|", views: titleLabel)
-        addConstraint(format: "H:|[v0]|", views: subtitleTextView)
+        addConstraint(format: "H:|[v0]|", views: subtitleLabel)
         addConstraint(format: "H:|[v0]|", views: baseContentView)
         addConstraint(format: "H:|[v0]|", views: commentCollectionView)
 
-        addConstraint(format: "V:|-4-[v0(22)]-2-[v1(22)]-4-[v2]-4-[v3(220)]-4-|", views: titleLabel,subtitleTextView, baseContentView, commentCollectionView)
+        addConstraint(format: "V:|-4-[v0(22)]-2-[v1(22)]-4-[v2]-4-[v3(220)]-4-|", views: titleLabel,subtitleLabel, baseContentView, commentCollectionView)
         
         commentCollectionView.register(ShareCommentCell.self, forCellWithReuseIdentifier: shareCommentCellId)
     }
