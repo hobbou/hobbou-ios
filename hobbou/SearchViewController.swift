@@ -62,8 +62,6 @@ class SearchViewController: UIViewController, UICollectionViewDataSource,  UICol
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 
 }
 

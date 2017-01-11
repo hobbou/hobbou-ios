@@ -28,7 +28,7 @@ class AppSearchBarController: SearchBarController {
     
     @objc private func handleBackButton(){
         print("back")
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     private func prepareMoreButton() {
