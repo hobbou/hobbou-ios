@@ -11,6 +11,9 @@ import UIKit
 class AccountViewController: UIViewController, UICollectionViewDataSource,  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
 
     let accountListCellId = "accountListCellId"
+    let savedListCellId = "savedListCellId"
+    let playlistListCellId = "playlistListCellId"
+    let configListCellId = "configListCellId"
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,13 +35,26 @@ class AccountViewController: UIViewController, UICollectionViewDataSource,  UICo
         view.addConstraint(format: "V:|[v0]|", views: collectionView)
         collectionView.backgroundColor = .clear
         collectionView.register(AccountListCellView.self, forCellWithReuseIdentifier: accountListCellId)
+        collectionView.register(SavedListCellView.self, forCellWithReuseIdentifier: savedListCellId)
+        collectionView.register(PlaylistListCellView.self, forCellWithReuseIdentifier: playlistListCellId)
+        collectionView.register(ConfigListCellView.self, forCellWithReuseIdentifier: configListCellId)
         collectionView.alwaysBounceVertical = true
         //collectionView.contentInset = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
         //collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: accountListCellId, for: indexPath) as! AccountListCellView
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: accountListCellId, for: indexPath) as! BaseCell
+        if indexPath.item == 1 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: savedListCellId, for: indexPath) as! SavedListCellView
+        }else if indexPath.item == 2 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: playlistListCellId, for: indexPath) as! PlaylistListCellView
+        }else if indexPath.item == 3 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: configListCellId, for: indexPath) as! ConfigListCellView
+        }
+        else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: accountListCellId, for: indexPath) as! AccountListCellView
+        }
         return cell
     }
     
@@ -47,7 +63,17 @@ class AccountViewController: UIViewController, UICollectionViewDataSource,  UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        var size = CGSize(width: view.frame.width, height: 200)
+        if indexPath.item == 1 {
+            size = CGSize(width: view.frame.width, height: 220)
+        } else if indexPath.item == 2 {
+            size = CGSize(width: view.frame.width, height: 450)
+        } else if indexPath.item == 3 {
+            size = CGSize(width: view.frame.width, height: 250)
+        }else{
+            size = CGSize(width: view.frame.width, height: 200)
+        }
+        return size
     }
     
     override func didReceiveMemoryWarning() {
