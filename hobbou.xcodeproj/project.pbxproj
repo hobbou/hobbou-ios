@@ -32,6 +32,10 @@
 		917ECFB01E25022C00E35AB7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */; };
 		917ECFB21E25035400E35AB7 /* AccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB11E25035400E35AB7 /* AccountCellView.swift */; };
 		917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */; };
+		917ECFB61E262D8D00E35AB7 /* ContentLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB51E262D8D00E35AB7 /* ContentLauncher.swift */; };
+		917ECFB81E26370A00E35AB7 /* ContentDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB71E26370A00E35AB7 /* ContentDetailController.swift */; };
+		917ECFBA1E26377800E35AB7 /* ContentDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB91E26377800E35AB7 /* ContentDetailCellView.swift */; };
+		917ECFBC1E263B2500E35AB7 /* InterpolationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFBB1E263B2500E35AB7 /* InterpolationLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		917ECFB11E25035400E35AB7 /* AccountCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCellView.swift; sourceTree = "<group>"; };
 		917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAccountNavigationBar.swift; sourceTree = "<group>"; };
+		917ECFB51E262D8D00E35AB7 /* ContentLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentLauncher.swift; sourceTree = "<group>"; };
+		917ECFB71E26370A00E35AB7 /* ContentDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailController.swift; sourceTree = "<group>"; };
+		917ECFB91E26377800E35AB7 /* ContentDetailCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailCellView.swift; sourceTree = "<group>"; };
+		917ECFBB1E263B2500E35AB7 /* InterpolationLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterpolationLayer.swift; sourceTree = "<group>"; };
 		991699EDFB457467C070FF6B /* Pods-hobbouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbouTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hobbouTests/Pods-hobbouTests.release.xcconfig"; sourceTree = "<group>"; };
 		9E1D07FA46BC18EE85E4D080 /* Pods-hobbou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbou.release.xcconfig"; path = "Pods/Target Support Files/Pods-hobbou/Pods-hobbou.release.xcconfig"; sourceTree = "<group>"; };
 		B7D587DA7E171E5635DD1317 /* Pods-hobbou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hobbou/Pods-hobbou.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 				910FB3421E23468F00C811E3 /* AppSearchBarController.swift */,
 				917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */,
 				917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */,
+				917ECFB71E26370A00E35AB7 /* ContentDetailController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -163,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				910FB3371E1E3E4E00C811E3 /* Extensions.swift */,
+				917ECFB51E262D8D00E35AB7 /* ContentLauncher.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -175,6 +185,8 @@
 				910FB3441E238D5B00C811E3 /* SearchCellView.swift */,
 				910FB3461E238DA700C811E3 /* AdventureCellView.swift */,
 				917ECFB11E25035400E35AB7 /* AccountCellView.swift */,
+				917ECFB91E26377800E35AB7 /* ContentDetailCellView.swift */,
+				917ECFBB1E263B2500E35AB7 /* InterpolationLayer.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -518,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				917ECFBC1E263B2500E35AB7 /* InterpolationLayer.swift in Sources */,
 				910FB33A1E1E54CB00C811E3 /* MainNavigationController.swift in Sources */,
 				910FB3411E2340F100C811E3 /* SearchViewController.swift in Sources */,
 				910FB33F1E1FA6B600C811E3 /* BaseContentView.swift in Sources */,
@@ -525,6 +538,7 @@
 				910FB2F51E1E053000C811E3 /* AdventureViewController.swift in Sources */,
 				910FB3451E238D5B00C811E3 /* SearchCellView.swift in Sources */,
 				91582E9A1E1DE96800EB8654 /* AppDelegate.swift in Sources */,
+				917ECFB81E26370A00E35AB7 /* ContentDetailController.swift in Sources */,
 				910FB2F91E1E0B4C00C811E3 /* AppMenuController.swift in Sources */,
 				917ECFB21E25035400E35AB7 /* AccountCellView.swift in Sources */,
 				910FB3381E1E3E4E00C811E3 /* Extensions.swift in Sources */,
@@ -532,7 +546,9 @@
 				917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBar.swift in Sources */,
 				910FB2F31E1E040B00C811E3 /* HomeViewController.swift in Sources */,
 				917ECFB01E25022C00E35AB7 /* AccountViewController.swift in Sources */,
+				917ECFBA1E26377800E35AB7 /* ContentDetailCellView.swift in Sources */,
 				910FB2F71E1E058F00C811E3 /* HoBViewController.swift in Sources */,
+				917ECFB61E262D8D00E35AB7 /* ContentLauncher.swift in Sources */,
 				910FB33D1E1E5D5200C811E3 /* HomeCellView.swift in Sources */,
 				910FB3431E23468F00C811E3 /* AppSearchBarController.swift in Sources */,
 			);

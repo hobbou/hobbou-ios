@@ -74,6 +74,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         return 5
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let contentLauncher = ContentLauncher()
+        contentLauncher.showVideoPlayer()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = (view.frame.width - 16 - 16) * 9 / 16
         return CGSize(width: view.frame.width, height: (height + 16 + 68)*2)
