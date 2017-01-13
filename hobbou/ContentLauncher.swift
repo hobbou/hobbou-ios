@@ -25,7 +25,7 @@ class ContentLauncher: NSObject {
                 
             }, completion: { (completedAnimation) in
                 //maybe we'll do something here later...
-                UIApplication.shared.isStatusBarHidden = true
+                UIApplication.shared.setStatusBarHidden(true, with: .fade)
             })
         }
     }
@@ -244,7 +244,15 @@ class VideoPlayerView: UIView {
     }()
     
     var isPlaying = false
-    var isMinimized = false
+    var isMinimized = false {
+        didSet {
+            if isMinimized == false {
+                UIApplication.shared.setStatusBarHidden(true, with: .fade)
+            }else{
+                UIApplication.shared.setStatusBarHidden(false, with: .fade)
+            }
+        }
+    }
     
     func handleMinimize() {
         videoDetailView?.minimize()

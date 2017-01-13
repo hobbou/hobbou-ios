@@ -24,7 +24,6 @@ class VideoDetailController: UICollectionViewController, UICollectionViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor.clear
         
         //        let height = 9 / 16 * view.frame.width
@@ -103,10 +102,6 @@ class VideoDetailController: UICollectionViewController, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return false
     }
     
 }
