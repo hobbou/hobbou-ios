@@ -18,7 +18,7 @@ class ContentLauncher: NSObject {
             let videoDetailView = VideoDetailView(frame: keyWindow.frame)
             videoDetailView.frame = CGRect(x: 0, y: keyWindow.frame.height, width: 10, height: 10)
             keyWindow.addSubview(videoDetailView)
-            
+
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 
                 videoDetailView.frame = keyWindow.frame
@@ -106,7 +106,7 @@ class VideoDetailView: UIView {
     }
     
     let minHeight: CGFloat = 100
-    let rightMargin: CGFloat = 5
+    let rightMargin: CGFloat = 4
     let screenBounds = UIScreen.main.bounds
     
     var partialTranslationValue: CGFloat = 0
@@ -139,7 +139,7 @@ class VideoDetailView: UIView {
                 } else {
                     shouldMaximize = false
                     let translationDiff = self.partialTranslationValue - value * self.partialTranslationValue
-                    let diff = self.screenBounds.height - maxHeight + translationDiff
+                    let diff = self.screenBounds.height - maxHeight + 80 + translationDiff
                     self.handleTranslationValue(diff)
                 }
                 
@@ -188,18 +188,19 @@ class VideoDetailView: UIView {
         
         let playerHeight = maxHeight - heightDiff
         let playerWidth = screenBounds.width - widthDiff
-        videoPlayerView?.frame = CGRect(x: 0, y: min(heightDiff, maxHeight - minHeight - rightMargin), width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
-        videoPlayerView?.playerLayer?.frame = CGRect(x: 0, y: min(heightDiff, maxHeight - minHeight - rightMargin-128), width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
+        videoPlayerView?.frame = CGRect(x: 0, y: min(heightDiff, maxHeight - minHeight - rightMargin-129), width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
+        videoPlayerView?.playerLayer?.frame = CGRect(x: 0, y: min(heightDiff, maxHeight - minHeight - rightMargin-129), width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
         videoPlayerView?.playerLayer?.removeAllAnimations()
         
         //videoPlayerView?.layer.frame = CGRect(x: 0, y: min(heightDiff, maxHeight - minHeight - rightMargin), width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
         //videoPlayerView?.frame = videoPlayerView!.playerLayer!.frame
         videoDetailCollectionView.alpha = max(0, 1 - percentageDisplaced * 3)
         //videoDetailCollectionView
-        let x = max(0, min(heightDiff * 16/9 - percentageDisplaced * rightMargin, screenBounds.width - minWidth - rightMargin))
-        let y = max(0, min(val, screenBounds.height - maxHeight - 52))
-        frame = CGRect(x: x, y: y, width: frame.width, height: frame.height)
+        let x = max(0, min(heightDiff * 16/9 - percentageDisplaced * rightMargin, rightMargin))
+        let y = max(0, min(val, screenBounds.height - maxHeight + 80))
+        frame = CGRect(x: x, y: y, width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
         videoPlayerView?.controlsContainerView.alpha = 1 - val / (screenBounds.height - minHeight) * 1.2
+        //backgroundColor = .red
     }
     
     required init?(coder aDecoder: NSCoder) {

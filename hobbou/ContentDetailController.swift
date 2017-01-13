@@ -45,7 +45,7 @@ class VideoDetailController: UICollectionViewController, UICollectionViewDelegat
     }
     
     let minWidth: CGFloat = 140
-    let rightMargin: CGFloat = 5
+    let rightMargin: CGFloat = 4
     
     func handlePan(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
@@ -103,6 +103,10 @@ class VideoDetailController: UICollectionViewController, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
     }
     
 }
