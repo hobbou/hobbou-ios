@@ -257,7 +257,7 @@ class PlaylistListCellView: BaseCell, UICollectionViewDataSource,  UICollectionV
     }
     
     func handleAdd(){
-        print("handleSave")
+        print("handleAdd")
     }
     
     override func setupViews() {

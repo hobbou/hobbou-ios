@@ -115,19 +115,20 @@ class VideoDetailHeader: BaseCell {
 //        }
 //    }
     
-    let titleTextView: UITextView = {
+    let descriptionTextView: UITextView = {
         let tv = UITextView()
-        tv.text = "Sample Title"
+        tv.text = "Description in here"
         tv.backgroundColor = UIColor.clear
         tv.isEditable = false
         return tv
     }()
     
-    let userImageView: UIImageView = {
-        let imageView = UIImageView()
+    let userImageView: CustomImageView = {
+        let imageView = CustomImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 19
+        imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .green
         return imageView
     }()
     
@@ -143,49 +144,63 @@ class VideoDetailHeader: BaseCell {
         return view
     }()
     
-    let userTextView: UITextView = {
-        let tv = UITextView()
-        tv.isUserInteractionEnabled = false
-        return tv
+    let userLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .purple
+        return label
+    }()
+    
+    let subscriptionTotalLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .blue
+        return label
     }()
     
     let subscribeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "subscribe")?.withRenderingMode(.alwaysOriginal), for: UIControlState())
-        button.setTitleColor(.red, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.setTitle("Subscribe", for: UIControlState())
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
+        button.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 19/255, alpha: 1)
         return button
     }()
     
     override func setupViews() {
         super.setupViews()
         
-        addSubview(titleTextView)
+        addSubview(descriptionTextView)
         addSubview(separatorView)
-        addSubview(userImageView)
         addSubview(middleSeparatorView)
-        addSubview(userTextView)
-        addSubview(subscribeButton)
-        
+
         let containerView = UIView()
         addSubview(containerView)
+        containerView.addSubview(userImageView)
+        containerView.addSubview(subscribeButton)
+        containerView.addSubview(userLabel)
+        containerView.addSubview(subscriptionTotalLabel)
         
-        
-        addConstraint(format: "H:|-8-[v0]-32-|", views: titleTextView)
+        addConstraint(format: "H:|-8-[v0]-32-|", views: descriptionTextView)
         addConstraint(format: "H:|[v0]|", views: separatorView)
         addConstraint(format: "H:|[v0]|", views: middleSeparatorView)
         
-        addConstraint(format:"V:|[v0]-8-[v1(34)]-8-[v2(1)]-8-[v3(38)]-8-|", views: titleTextView, containerView, middleSeparatorView, userImageView)
+        addConstraint(format:"V:|[v0]-8-[v1(1)]-8-[v2]-8-|", views: descriptionTextView, middleSeparatorView, containerView)
         
         addConstraint(format: "V:[v0(1)]|", views: separatorView)
         
-        addConstraint(format: "H:|-16-[v0]|", views: containerView)
-        addConstraint(format: "H:|-12-[v0(38)]-[v1]-8-[v2(110)]|", views: userImageView, userTextView, subscribeButton)
+        addConstraint(format: "H:|-8-[v0]-8-|", views: containerView)
+        addConstraint(format: "H:|-8-[v0(44)]-[v1]-8-[v2(110)]-8-|", views: userImageView, userLabel, subscribeButton)
         
-        addConstraint(format: "V:[v0(40)]-12-|", views: userTextView)
-        addConstraint(format: "V:[v0(40)]-8-|", views: subscribeButton)
+        addConstraint(format: "V:|[v0(20)]-4-[v1(20)]|", views: userLabel, subscriptionTotalLabel)
+        addConstraint(format: "V:|[v0(44)]|", views: subscribeButton)
+        addConstraint(format: "V:|[v0(44)]|", views: userImageView)
+        
+        addConstraint(NSLayoutConstraint(item: subscriptionTotalLabel, attribute: .width, relatedBy: .equal, toItem: userLabel, attribute: .width, multiplier: 1, constant: 0))
+        
+        addConstraint(NSLayoutConstraint(item: subscriptionTotalLabel, attribute: .left, relatedBy: .equal, toItem: userLabel, attribute: .left, multiplier: 1, constant: 0))
+        
+        addConstraint(NSLayoutConstraint(item: subscriptionTotalLabel, attribute: .right, relatedBy: .equal, toItem: userLabel, attribute: .right, multiplier: 1, constant: 0))
         
     }
     

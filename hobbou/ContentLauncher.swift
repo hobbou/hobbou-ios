@@ -77,7 +77,15 @@ class VideoDetailView: UIView {
         if videoPlayerView!.isMinimized {
             maximize()
         } else {
-            videoPlayerView?.showControlsBriefly()
+            if videoPlayerView!.isPlaying{
+                videoPlayerView?.showControlsBriefly()
+            }else{
+            if videoPlayerView?.controlsContainerView.alpha == 1 {
+                videoPlayerView?.controlsContainerView.alpha = 0
+            }else{
+                videoPlayerView?.controlsContainerView.alpha = 1
+            }
+            }
         }
     }
     
@@ -228,9 +236,7 @@ class VideoPlayerView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .white
         button.isHidden = true
-        
         button.addTarget(self, action: #selector(handlePause), for: .touchUpInside)
-        
         return button
     }()
     
@@ -240,6 +246,50 @@ class VideoPlayerView: UIView {
         button.addTarget(self, action: #selector(handleMinimize), for: .touchUpInside)
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var fullscreenButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "Full Screen Filled-100"), for: UIControlState())
+        button.addTarget(self, action: #selector(handleFullscreen), for: .touchUpInside)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let userProfileImageView: CustomImageView = {
+        let imageView = CustomImageView()
+        imageView.backgroundColor = UIColor.green
+        imageView.layer.cornerRadius = 16.5
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.purple
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.lightGray
+        return label
+    }()
+    
+    lazy var moreButton: UIButton = {
+        let button = UIButton(type: .system)
+        let bookmarkImage = UIImage(named: "Menu 2 Filled-100")
+        button.setImage(bookmarkImage, for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
         return button
     }()
     
@@ -260,6 +310,14 @@ class VideoPlayerView: UIView {
         //UIView.animate(withDuration: 0.2, animations: {
         //    self.alpha = 0
         //})
+    }
+    
+    func handleMore(){
+        print("handleMore")
+    }
+    
+    func handleFullscreen(){
+        print("handleFullscreen")
     }
     
     var widthConstraint: NSLayoutConstraint?
@@ -336,9 +394,7 @@ class VideoPlayerView: UIView {
         super.init(frame: frame)
         
         setupPlayerView()
-        
         setupGradientLayer()
-        
         addSubview(controlsContainerView)
         addConstraint(format: "H:|[v0]|", views: controlsContainerView)
         addConstraint(format: "V:|[v0]|", views: controlsContainerView)
@@ -353,8 +409,14 @@ class VideoPlayerView: UIView {
         pausePlayButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         pausePlayButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+        controlsContainerView.addSubview(fullscreenButton)
+        fullscreenButton.rightAnchor.constraint(equalTo: controlsContainerView.rightAnchor, constant: -8).isActive = true
+        fullscreenButton.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor, constant: -2).isActive = true
+        fullscreenButton.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        fullscreenButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        
         controlsContainerView.addSubview(videoLengthLabel)
-        videoLengthLabel.rightAnchor.constraint(equalTo: controlsContainerView.rightAnchor, constant: -8).isActive = true
+        videoLengthLabel.rightAnchor.constraint(equalTo: fullscreenButton.leftAnchor, constant: -8).isActive = true
         videoLengthLabel.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor, constant: -2).isActive = true
         videoLengthLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         videoLengthLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
@@ -372,12 +434,40 @@ class VideoPlayerView: UIView {
         videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         controlsContainerView.addSubview(minimizeButton)
-        minimizeButton.topAnchor.constraint(equalTo: controlsContainerView.topAnchor, constant: 20).isActive = true
-        minimizeButton.leftAnchor.constraint(equalTo: controlsContainerView.leftAnchor, constant: 0).isActive = true
-        //minimizeButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        //minimizeButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        minimizeButton.topAnchor.constraint(equalTo: controlsContainerView.topAnchor, constant: 10).isActive = true
+        minimizeButton.leftAnchor.constraint(equalTo: controlsContainerView.leftAnchor, constant: 10).isActive = true
         minimizeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
         minimizeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        controlsContainerView.addSubview(userProfileImageView)
+        userProfileImageView.topAnchor.constraint(equalTo: controlsContainerView.topAnchor, constant: 10).isActive = true
+        userProfileImageView.leftAnchor.constraint(equalTo: controlsContainerView.leftAnchor, constant: 40).isActive = true
+        userProfileImageView.widthAnchor.constraint(equalToConstant: 33).isActive = true
+        userProfileImageView.heightAnchor.constraint(equalToConstant: 33).isActive = true
+        
+        controlsContainerView.addSubview(titleLabel)
+        titleLabel.topAnchor.constraint(equalTo: userProfileImageView.topAnchor, constant: 2).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: userProfileImageView.rightAnchor, constant: 8).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
+        
+        controlsContainerView.addSubview(subtitleLabel)
+        subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2).isActive = true
+        subtitleLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0).isActive = true
+        subtitleLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor).isActive = true
+        subtitleLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor).isActive = true
+
+        
+        controlsContainerView.addSubview(moreButton)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .top, relatedBy: .equal, toItem: userProfileImageView, attribute: .top, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .left, relatedBy: .equal, toItem: titleLabel, attribute: .right, multiplier: 1, constant: 0))
+        //right constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: controlsContainerView, attribute: .right, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 33))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 33))
         
         backgroundColor = .black
     }
@@ -432,7 +522,7 @@ class VideoPlayerView: UIView {
             controlsContainerView.backgroundColor = .clear
             pausePlayButton.isHidden = false
             isPlaying = true
-            
+            self.perform(#selector(self.hideControls), with: self, afterDelay: 3)
             if let duration = player?.currentItem?.duration {
                 let seconds = CMTimeGetSeconds(duration)
                 
@@ -457,12 +547,22 @@ class VideoPlayerView: UIView {
         })
     }
     
-    func showControlsBriefly() {
+    func showControls() {
         UIView.animate(withDuration: 0.5, animations: {
             self.controlsContainerView.alpha = 1
-        }, completion: { (completed) in
-            self.perform(#selector(self.hideControls), with: self, afterDelay: 2.5)
         })
+    }
+    
+    func showControlsBriefly() {
+        if controlsContainerView.alpha == 1 {
+            self.controlsContainerView.alpha = 0
+        }else{
+            UIView.animate(withDuration: 0.0, animations: {
+                self.controlsContainerView.alpha = 1
+            }, completion: { (completed) in
+                self.perform(#selector(self.hideControls), with: self, afterDelay: 3.5)
+            })
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -507,6 +607,12 @@ class VideoDetailCollectionView: UICollectionView, UICollectionViewDataSource, U
 //        if let count = video?.relatedVideos?.count, section == 0 {
 //            return count
 //        }
+        if section == 0 {
+            return 4
+        }
+        if section == 1 {
+            return 4
+        }
         return 4
     }
     

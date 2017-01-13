@@ -97,6 +97,7 @@ class AppMenuController: MenuController {
         print("handleProfile")
         present(AppAccountNavigationBarController(rootViewController: AccountViewController())
 , animated: true, completion: nil)
+        
     }
     
     func handleClose(){
