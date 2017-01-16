@@ -9,7 +9,7 @@
 import UIKit
 import Material
 
-class RelatedVideoCell: BaseCell {
+class RelatedVideoCell: SeparatedListContentBaseCell {
     
 //    var video: Video? {
 //        didSet {
@@ -25,58 +25,7 @@ class RelatedVideoCell: BaseCell {
 //            userNameAndViewsLabel.text = "\(video!.channel!.name!)\n\(numViews!) views"
 //        }
 //    }
-    
-    let thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = Color.grey.darken2
-        return label
-    }()
-    
-    let userNameAndViewsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = Color.grey.darken2
-        label.numberOfLines = 2
-        return label
-    }()
-    
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
-        return view
-    }()
-    
-    override func setupViews() {
-        super.setupViews()
-        
-        addSubview(thumbnailImageView)
-        addSubview(titleLabel)
-        addSubview(separatorView)
-        addSubview(userNameAndViewsLabel)
-        
-        let width = 16 / 9 * (frame.height-16)
-        addConstraint(format: "H:|-16-[v0(\(width))]-8-[v1]-16-|", views: thumbnailImageView, titleLabel)
-        
-        addConstraint(format: "H:|[v0]|", views: separatorView)
-        
-        addConstraint(format: "V:|[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
-        
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 2))
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
-        
-        addConstraint(format: "H:|-\(16 + width + 8)-[v0]-16-|", views: userNameAndViewsLabel)
-        
-        addConstraint(NSLayoutConstraint(item: userNameAndViewsLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
-        addConstraint(NSLayoutConstraint(item: userNameAndViewsLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30))
-    }
+
     
 }
 
@@ -244,7 +193,7 @@ class CommentsHeader: BaseCell {
     
 }
 
-class CommentCell: BaseCell {
+class CommentCell: BaseCommentCell {
     
 //    var comment: Comment? {
 //        didSet {
@@ -257,36 +206,59 @@ class CommentCell: BaseCell {
 //        }
 //    }
     
-    let textView: UITextView = {
-        let tv = UITextView()
-        return tv
-    }()
-    
-    let userImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 25
-        imageView.layer.masksToBounds = true
-        return imageView
-    }()
-    
-    let separatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
-        return view
-    }()
+
+    override func handleMore() {
+        print("handleMore")
+    }
     
     override func setupViews() {
-        
-        addSubview(textView)
-        addSubview(userImageView)
+        addSubview(commentContainerView)
         addSubview(separatorView)
+        addConstraint(format: "H:|[v0]|", views: commentContainerView)
+        addConstraint(format: "H:|[v0]|", views: separatorView)
+        addConstraint(format: "V:|[v0]-2-[v1(1)]|", views: commentContainerView, separatorView)
+        commentContainerView.addSubview(userProfileImageView)
+        commentContainerView.addSubview(descriptionLabel)
+        commentContainerView.addSubview(subtitleLabel)
+        commentContainerView.addSubview(moreButton)
         
-        addConstraint(format: "H:|-16-[v0(50)]-4-[v1]|", views: userImageView, textView)
-        addConstraint(format: "V:|-8-[v0(50)]", views: userImageView)
-        addConstraint(format: "V:|[v0][v1(1)]|", views: textView, separatorView)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .top, relatedBy: .equal, toItem: commentContainerView, attribute: .top, multiplier: 1, constant: 8))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .left, relatedBy: .equal, toItem: commentContainerView, attribute: .left, multiplier: 1, constant: 8))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 33))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 33))
         
-        addConstraint(format: "H:|-8-[v0]-8-|", views: separatorView)
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .top, relatedBy: .equal, toItem: userProfileImageView, attribute: .top, multiplier: 1, constant: 4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 4))
+        //right constraint
+        addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .right, relatedBy: .equal, toItem: commentContainerView, attribute: .right, multiplier: 1, constant: -4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: descriptionLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: descriptionLabel, attribute: .bottom, multiplier: 1, constant: 4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 4))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
+        //width constraint
+        //addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: descriptionLabel, attribute: .width, multiplier: 1, constant: 0))
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .top, relatedBy: .equal, toItem: subtitleLabel, attribute: .top, multiplier: 1, constant: 4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .left, relatedBy: .equal, toItem: subtitleLabel, attribute: .right, multiplier: 1, constant: 4))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: descriptionLabel, attribute: .right, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: subtitleLabel, attribute: .height, multiplier: 1, constant: 0))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .width, relatedBy: .equal, toItem: subtitleLabel, attribute: .height, multiplier: 1, constant: 0))
     }
     
 }

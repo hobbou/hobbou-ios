@@ -64,6 +64,7 @@ class ShareCommentCell: BaseCommentCell {
         addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 14))
         //width constraint
         addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: descriptionLabel, attribute: .width, multiplier: 1, constant: 0))
+        
     }
     
 }
@@ -148,6 +149,20 @@ class BaseCommentCell: BaseCell {
         return view
     }()
     
+    lazy var moreButton: UIButton = {
+        let button = UIButton(type: .system)
+        let bookmarkImage = UIImage(named: "Menu 2 Filled-100")
+        button.setImage(bookmarkImage, for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
+        return button
+    }()
+    
+    func handleMore(){
+        
+    }
 }
 
 class ShareCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{

@@ -647,7 +647,7 @@ class VideoDetailCollectionView: UICollectionView, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: frame.width, height: 96)
+            return CGSize(width: frame.width, height: 160)
         } else {
 //            if let attributedText = video?.comments?[indexPath.item].attributedText() {
 //                let size = CGSize(width: frame.width - 90, height: 1000)

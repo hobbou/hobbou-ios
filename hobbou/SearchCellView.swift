@@ -11,7 +11,7 @@ import Material
 
 class SeparatedListContentBaseCell: BaseCell {
     
-    let searchContentView: UIView = {
+    let contentSeparatedView: UIView = {
         let view = UIView()
         return view
     }()
@@ -69,18 +69,18 @@ class SeparatedListContentBaseCell: BaseCell {
     }()
     
     override func setupViews() {
-        addSubview(searchContentView)
+        addSubview(contentSeparatedView)
         addSubview(separatorView)
-        addConstraint(format: "H:|-4-[v0]-4-|", views: searchContentView)
+        addConstraint(format: "H:|-4-[v0]-4-|", views: contentSeparatedView)
         addConstraint(format: "H:|[v0]|", views: separatorView)
-        addConstraint(format: "V:|-4-[v0]-4-[v1(1)]|", views: searchContentView, separatorView)
+        addConstraint(format: "V:|-4-[v0]-4-[v1(1)]|", views: contentSeparatedView, separatorView)
         
-        searchContentView.addSubview(thumbnailImageView)
-        searchContentView.addSubview(titleLabel)
-        searchContentView.addSubview(subtitleLabel)
-        searchContentView.addSubview(moreButton)
+        contentSeparatedView.addSubview(thumbnailImageView)
+        contentSeparatedView.addSubview(titleLabel)
+        contentSeparatedView.addSubview(subtitleLabel)
+        contentSeparatedView.addSubview(moreButton)
         
-        searchContentView.addSubview(lengthLabel)
+        contentSeparatedView.addSubview(lengthLabel)
         //top constraint
         addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -4))
         //left constraint
@@ -91,9 +91,9 @@ class SeparatedListContentBaseCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 22))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .top, relatedBy: .equal, toItem: searchContentView, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .top, relatedBy: .equal, toItem: contentSeparatedView, attribute: .top, multiplier: 1, constant: 0))
         //left constraint
-        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .left, relatedBy: .equal, toItem: searchContentView, attribute: .left, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .left, relatedBy: .equal, toItem: contentSeparatedView, attribute: .left, multiplier: 1, constant: 0))
         //height constraint
         addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 154))
         //width constraint
@@ -121,7 +121,7 @@ class SeparatedListContentBaseCell: BaseCell {
         //left constraint
         addConstraint(NSLayoutConstraint(item: moreButton, attribute: .left, relatedBy: .equal, toItem: titleLabel, attribute: .right, multiplier: 1, constant: 4))
         //right constraint
-        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: searchContentView, attribute: .right, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: contentSeparatedView, attribute: .right, multiplier: 1, constant: 0))
         //height constraint
         addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 22))
         //width constraint
