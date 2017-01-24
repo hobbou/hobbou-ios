@@ -45,5 +45,6 @@ class AppSearchBarController: SearchBarController {
     private func prepareSearchBar() {
         searchBar.leftViews = [backButton]
         searchBar.rightViews = [moreButton]
+        searchBar.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
     }
 }

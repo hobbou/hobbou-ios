@@ -18,13 +18,13 @@ class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionVie
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
-        cv.backgroundColor = .clear
+        cv.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         return cv
     }()
     
     let containerLeft: UIView = {
         let view = UIView()
-        view.backgroundColor = .yellow
+        //view.backgroundColor = .yellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -37,7 +37,7 @@ class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionVie
         button.translatesAutoresizingMaskIntoConstraints = false
         button.showsTouchWhenHighlighted = true
         button.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
-        button.backgroundColor = .white
+        button.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         return button
     }()
     
@@ -104,7 +104,7 @@ class FeaturedListCell: BaseCell, UICollectionViewDataSource, UICollectionViewDe
     
     let pager: UIView = {
         let view = UIView()
-        view.backgroundColor = .green
+        //view.backgroundColor = .green
         return view
     }()
 

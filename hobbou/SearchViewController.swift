@@ -37,10 +37,10 @@ class SearchViewController: UIViewController, UICollectionViewDataSource,  UICol
         view.addSubview(collectionView)
         view.addConstraint(format: "H:|[v0]|", views: collectionView)
         view.addConstraint(format: "V:|[v0]|", views: collectionView)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         collectionView.register(SearchCell.self, forCellWithReuseIdentifier: searchCellId)
         collectionView.alwaysBounceVertical = true
-        //collectionView.contentInset = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         //collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
     }
     

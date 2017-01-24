@@ -96,7 +96,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
 
         view.addSubview(categorySelectionView)
         view.addSubview(collectionView)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         
         //collectionView.register(CategorySelectionCell.self, forCellWithReuseIdentifier: categorySelectionCellId)
         collectionView.register(FeaturedListCell.self, forCellWithReuseIdentifier: featureCellId)

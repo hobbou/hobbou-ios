@@ -19,7 +19,7 @@ class HoBViewController: UIViewController, UICollectionViewDataSource, UICollect
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
-        cv.backgroundColor = .clear
+        cv.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         return cv
     }()
     
