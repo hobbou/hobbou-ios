@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         view.addSubview(collectionView)
         view.addConstraint(format: "H:|[v0]|", views: collectionView)
         view.addConstraint(format: "V:|[v0]|", views: collectionView)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         collectionView.register(PostCell.self, forCellWithReuseIdentifier: postCellId)
         collectionView.register(ShareCell.self, forCellWithReuseIdentifier: shareCellId)
         collectionView.alwaysBounceVertical = true
@@ -91,7 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("begin")
+        //print("begin")
         for cell in collectionView.visibleCells {
             if let cell = cell as? PostCell{
                 cell.showContentContainer()
@@ -116,7 +116,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("end")
+        //print("end")
         for cell in collectionView.visibleCells {
             if let cell = cell as? PostCell{
                 cell.hideContentContainer()
@@ -129,7 +129,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate{
-            print("end")
+            //print("end")
             for cell in collectionView.visibleCells {
                 if let cell = cell as? PostCell{
                     cell.hideContentContainer()
