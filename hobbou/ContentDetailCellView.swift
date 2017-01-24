@@ -77,7 +77,7 @@ class VideoDetailHeader: BaseCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .green
+        imageView.backgroundColor = .white
         return imageView
     }()
     
@@ -95,13 +95,15 @@ class VideoDetailHeader: BaseCell {
     
     let userLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .purple
+        label.text = "Username"
+        //label.backgroundColor = .purple
         return label
     }()
     
     let subscriptionTotalLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .blue
+        label.text = "300K Subscribers"
+        //label.backgroundColor = .blue
         return label
     }()
     

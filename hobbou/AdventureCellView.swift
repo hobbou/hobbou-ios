@@ -22,9 +22,9 @@ class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionVie
         return cv
     }()
     
-    let containerLeft: UIView = {
+    let containerRight: UIView = {
         let view = UIView()
-        //view.backgroundColor = .yellow
+        view.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -37,7 +37,7 @@ class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionVie
         button.translatesAutoresizingMaskIntoConstraints = false
         button.showsTouchWhenHighlighted = true
         button.addTarget(self, action: #selector(handleMore), for: .touchUpInside)
-        button.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
+        //button.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         return button
     }()
     
@@ -55,9 +55,14 @@ class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionVie
         //addConstraint(format: "H:|[v0]|", views: containerLeft)
         //addConstraint(format: "V:|-4-[v0]-4-|", views: containerLeft)
         setupCollectionView()
-        addSubview(moreButton)
-        addConstraint(format: "H:[v0(44)]|", views: moreButton)
-        addConstraint(format: "V:|[v0]|", views: moreButton)
+        addSubview(containerRight)
+        addConstraint(format: "H:[v0(44)]|", views: containerRight)
+        addConstraint(format: "V:|[v0]|", views: containerRight)
+        containerRight.addSubview(moreButton)
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .centerY, relatedBy: .equal, toItem: containerRight, attribute: .centerY, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .centerX, relatedBy: .equal, toItem: containerRight, attribute: .centerX, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: containerRight, attribute: .height, multiplier: 0.7, constant: 0))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .width, relatedBy: .equal, toItem: containerRight, attribute: .height, multiplier: 0.7, constant: 0))
     }
     
     @objc func handleMore(){

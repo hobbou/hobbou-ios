@@ -42,7 +42,7 @@ class VideoDetailView: UIView {
     
     let videoDetailCollectionView: VideoDetailCollectionView = {
         let cv = VideoDetailCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        cv.backgroundColor = UIColor.white
+        cv.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         return cv
     }()
     
@@ -260,7 +260,7 @@ class VideoPlayerView: UIView {
     
     let userProfileImageView: CustomImageView = {
         let imageView = CustomImageView()
-        imageView.backgroundColor = UIColor.green
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 16.5
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -269,17 +269,75 @@ class VideoPlayerView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.purple
+        //label.backgroundColor = UIColor.purple
+        label.text = "Title in here... gp"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         return label
     }()
     
-    let subtitleLabel: UILabel = {
+    let channelLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.red
+        //label.backgroundColor = UIColor.red
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.lightGray
+        label.textColor = .white
+        label.text = "Channel name"
+        label.font = .systemFont(ofSize: 12)
         return label
+    }()
+    
+    let contentViewsLabel: UILabel = {
+        let label = UILabel()
+        //label.backgroundColor = UIColor.red
+        label.text = "200k"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
+    let contentBouLabel: UILabel = {
+        let label = UILabel()
+        //label.backgroundColor = UIColor.red
+        label.text = "255k"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
+    let contentDateAgoLabel: UILabel = {
+        let label = UILabel()
+        //label.backgroundColor = UIColor.red
+        label.text = "2 days ago"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
+    let contentViewsImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Play-104")?.withRenderingMode(.alwaysTemplate))
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        return imageView
+    }()
+    
+    let contentBouImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Christmas Star-96")?.withRenderingMode(.alwaysTemplate))
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        return imageView
+    }()
+    
+    let contentCalendarImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Calendar-96")?.withRenderingMode(.alwaysTemplate))
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        return imageView
     }()
     
     lazy var moreButton: UIButton = {
@@ -448,14 +506,44 @@ class VideoPlayerView: UIView {
         controlsContainerView.addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: userProfileImageView.topAnchor, constant: 2).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: userProfileImageView.rightAnchor, constant: 8).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        controlsContainerView.addSubview(subtitleLabel)
-        subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2).isActive = true
-        subtitleLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0).isActive = true
-        subtitleLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor).isActive = true
-        subtitleLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor).isActive = true
+        controlsContainerView.addSubview(channelLabel)
+        channelLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0).isActive = true
+        channelLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0).isActive = true
+        //channelLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor).isActive = true
+        channelLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor).isActive = true
 
+        controlsContainerView.addSubview(contentViewsImageView)
+        contentViewsImageView.centerYAnchor.constraint(equalTo: channelLabel.centerYAnchor, constant: 0).isActive = true
+        contentViewsImageView.leftAnchor.constraint(equalTo: channelLabel.rightAnchor, constant: 2).isActive = true
+        contentViewsImageView.heightAnchor.constraint(equalTo: channelLabel.heightAnchor, multiplier: 0.5).isActive = true
+        contentViewsImageView.widthAnchor.constraint(equalTo: channelLabel.heightAnchor, multiplier: 0.5).isActive = true
+        controlsContainerView.addSubview(contentViewsLabel)
+        contentViewsLabel.topAnchor.constraint(equalTo: channelLabel.topAnchor, constant: 0).isActive = true
+        contentViewsLabel.leftAnchor.constraint(equalTo: contentViewsImageView.rightAnchor, constant: 0).isActive = true
+        contentViewsLabel.heightAnchor.constraint(equalTo: channelLabel.heightAnchor).isActive = true
+        
+        controlsContainerView.addSubview(contentBouImageView)
+        contentBouImageView.centerYAnchor.constraint(equalTo: channelLabel.centerYAnchor, constant: 0).isActive = true
+        contentBouImageView.leftAnchor.constraint(equalTo: contentViewsLabel.rightAnchor, constant: 2).isActive = true
+        contentBouImageView.heightAnchor.constraint(equalTo: channelLabel.heightAnchor, multiplier: 0.5).isActive = true
+        contentBouImageView.widthAnchor.constraint(equalTo: channelLabel.heightAnchor, multiplier: 0.5).isActive = true
+        controlsContainerView.addSubview(contentBouLabel)
+        contentBouLabel.topAnchor.constraint(equalTo: channelLabel.topAnchor, constant: 0).isActive = true
+        contentBouLabel.leftAnchor.constraint(equalTo: contentBouImageView.rightAnchor, constant: 0).isActive = true
+        contentBouLabel.heightAnchor.constraint(equalTo: channelLabel.heightAnchor).isActive = true
+        
+        controlsContainerView.addSubview(contentCalendarImageView)
+        contentCalendarImageView.centerYAnchor.constraint(equalTo: channelLabel.centerYAnchor, constant: 0).isActive = true
+        contentCalendarImageView.leftAnchor.constraint(equalTo: contentBouLabel.rightAnchor, constant: 2).isActive = true
+        contentCalendarImageView.heightAnchor.constraint(equalTo: channelLabel.heightAnchor, multiplier: 0.5).isActive = true
+        contentCalendarImageView.widthAnchor.constraint(equalTo: channelLabel.heightAnchor, multiplier: 0.5).isActive = true
+        controlsContainerView.addSubview(contentDateAgoLabel)
+        contentDateAgoLabel.topAnchor.constraint(equalTo: channelLabel.topAnchor, constant: 0).isActive = true
+        contentDateAgoLabel.leftAnchor.constraint(equalTo: contentCalendarImageView.rightAnchor, constant: 0).isActive = true
+        contentDateAgoLabel.heightAnchor.constraint(equalTo: channelLabel.heightAnchor).isActive = true
+        
         
         controlsContainerView.addSubview(moreButton)
         //top constraint
