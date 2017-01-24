@@ -21,6 +21,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.minimumLineSpacing = 0
         cv.delegate = self
         cv.dataSource = self
         return cv
@@ -195,7 +196,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("begin")
+        //print("begin")
         for cell in collectionView.visibleCells {
             if let listCell = cell as? RecomendedBaseListCell {
                 for cell in listCell.collectionView.visibleCells{
@@ -228,7 +229,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("end")
+        //print("end")
         for cell in collectionView.visibleCells {
             if let listCell = cell as? RecomendedBaseListCell {
                 for cell in listCell.collectionView.visibleCells{
@@ -249,7 +250,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate{
-            print("end")
+            //print("end")
             for cell in collectionView.visibleCells {
                 if let listCell = cell as? RecomendedBaseListCell {
                     for cell in listCell.collectionView.visibleCells{

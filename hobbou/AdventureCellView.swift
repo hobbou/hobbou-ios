@@ -191,20 +191,20 @@ class RecomendedBaseListCell: BaseCell, UICollectionViewDataSource, UICollection
     
     let containerHeader: UIView = {
         let view = UIView()
-        view.backgroundColor = .green
+        //view.backgroundColor = .green
         return view
     }()
     
     let containerContent: UIView = {
         let view = UIView()
-        view.backgroundColor = .purple
+        //view.backgroundColor = .purple
         return view
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Recomended", comment: "for recomendedlist")
-        label.backgroundColor = .orange
+        //label.backgroundColor = .orange
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -230,23 +230,23 @@ class RecomendedBaseListCell: BaseCell, UICollectionViewDataSource, UICollection
         
         containerHeader.addSubview(titleLabel)
         //top constraint
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: containerHeader, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal, toItem: containerHeader, attribute: .centerY, multiplier: 1, constant: 0))
         //left constraint
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: containerHeader, attribute: .left, multiplier: 1, constant: 4))
         //right constraint
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: containerHeader, attribute: .right, multiplier: 1, constant: -44))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44))
+        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         
         containerHeader.addSubview(moreButton)
         //top constraint
-        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .top, relatedBy: .equal, toItem: containerHeader, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .centerY, relatedBy: .equal, toItem: containerHeader, attribute: .centerY, multiplier: 1, constant: 0))
         //right constraint
         addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: containerHeader, attribute: .right, multiplier: 1, constant: 0))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 44))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 22))
         //width constraint
-        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 44))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 22))
         
         containerContent.addSubview(collectionView)
         addConstraint(format: "H:|[v0]|", views: collectionView)
@@ -349,7 +349,7 @@ class FeaturedCell: BaseCell {
 
     let userProfileImageView: CustomImageView = {
         let imageView = CustomImageView()
-        imageView.backgroundColor = UIColor.green
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -358,17 +358,75 @@ class FeaturedCell: BaseCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.purple
+        //label.backgroundColor = UIColor.purple
+        label.text = "Title in here"
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let subtitleLabel: UILabel = {
+    let channelLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.red
+        //label.backgroundColor = UIColor.red
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.lightGray
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        label.text = "Channel Name"
         return label
+    }()
+    
+    let contentViewsLabel: UILabel = {
+        let label = UILabel()
+        //label.backgroundColor = UIColor.red
+        label.text = "200k"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
+    let contentBouLabel: UILabel = {
+        let label = UILabel()
+        //label.backgroundColor = UIColor.red
+        label.text = "255k"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
+    let contentDateAgoLabel: UILabel = {
+        let label = UILabel()
+        //label.backgroundColor = UIColor.red
+        label.text = "2 days ago"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
+    let contentViewsImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Play-104")?.withRenderingMode(.alwaysTemplate))
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        return imageView
+    }()
+    
+    let contentBouImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Christmas Star-96")?.withRenderingMode(.alwaysTemplate))
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        return imageView
+    }()
+    
+    let contentCalendarImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "Calendar-96")?.withRenderingMode(.alwaysTemplate))
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = .white
+        return imageView
     }()
     
     let lengthLabel: UILabel = {
@@ -420,7 +478,13 @@ class FeaturedCell: BaseCell {
         
         containerView.addSubview(userProfileImageView)
         containerView.addSubview(titleLabel)
-        containerView.addSubview(subtitleLabel)
+        containerView.addSubview(channelLabel)
+        containerView.addSubview(contentViewsImageView)
+        containerView.addSubview(contentViewsLabel)
+        containerView.addSubview(contentBouImageView)
+        containerView.addSubview(contentBouLabel)
+        containerView.addSubview(contentCalendarImageView)
+        containerView.addSubview(contentDateAgoLabel)
         containerView.addSubview(saveButton)
         
         //top constraint
@@ -443,14 +507,60 @@ class FeaturedCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 0))
         //left constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
+        addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .left, relatedBy: .equal, toItem: userProfileImageView, attribute: .right, multiplier: 1, constant: 8))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
+        addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 20))
         //width constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
-                
+        //addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
+
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: contentViewsImageView, attribute: .centerY, relatedBy: .equal, toItem: channelLabel, attribute: .centerY, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: contentViewsImageView, attribute: .left, relatedBy: .equal, toItem: channelLabel, attribute: .right, multiplier: 1, constant: 2))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: contentViewsImageView, attribute: .height, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 0.5, constant: 0))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: contentViewsImageView, attribute: .width, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 0.5, constant: 0))
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: contentViewsLabel, attribute: .top, relatedBy: .equal, toItem: channelLabel, attribute: .top, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: contentViewsLabel, attribute: .left, relatedBy: .equal, toItem: contentViewsImageView, attribute: .right, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: contentViewsLabel, attribute: .height, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 1, constant: 0))
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: contentBouImageView, attribute: .centerY, relatedBy: .equal, toItem: channelLabel, attribute: .centerY, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: contentBouImageView, attribute: .left, relatedBy: .equal, toItem: contentViewsLabel, attribute: .right, multiplier: 1, constant: 2))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: contentBouImageView, attribute: .height, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 0.5, constant: 0))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: contentBouImageView, attribute: .width, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 0.5, constant: 0))
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: contentBouLabel, attribute: .top, relatedBy: .equal, toItem: channelLabel, attribute: .top, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: contentBouLabel, attribute: .left, relatedBy: .equal, toItem: contentBouImageView, attribute: .right, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: contentBouLabel, attribute: .height, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 1, constant: 0))
+        
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: contentCalendarImageView, attribute: .centerY, relatedBy: .equal, toItem: channelLabel, attribute: .centerY, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: contentCalendarImageView, attribute: .left, relatedBy: .equal, toItem: contentBouLabel, attribute: .right, multiplier: 1, constant: 2))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: contentCalendarImageView, attribute: .height, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 0.5, constant: 0))
+        //width constraint
+        addConstraint(NSLayoutConstraint(item: contentCalendarImageView, attribute: .width, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 0.5, constant: 0))
+        //top constraint
+        addConstraint(NSLayoutConstraint(item: contentDateAgoLabel, attribute: .top, relatedBy: .equal, toItem: channelLabel, attribute: .top, multiplier: 1, constant: 0))
+        //left constraint
+        addConstraint(NSLayoutConstraint(item: contentDateAgoLabel, attribute: .left, relatedBy: .equal, toItem: contentCalendarImageView, attribute: .right, multiplier: 1, constant: 0))
+        //height constraint
+        addConstraint(NSLayoutConstraint(item: contentDateAgoLabel, attribute: .height, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 1, constant: 0))
+        
+        
         //top constraint
         addConstraint(NSLayoutConstraint(item: saveButton, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -4))
         //left constraint
@@ -500,17 +610,21 @@ class ThreeDimensionContentBaseCell: BaseCell {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.purple
+        //label.backgroundColor = UIColor.purple
+        label.text  = "Title in here.."
+        label.font = .systemFont(ofSize: 11)
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let subtitleLabel: UILabel = {
+    let channelLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.red
+        //label.backgroundColor = UIColor.red
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.lightGray
-        label.sizeToFit()
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 6)
+        label.text = "Channel Name"
         return label
     }()
     
@@ -572,7 +686,7 @@ class ThreeDimensionContentBaseCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: lengthLabel, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 22))
         
         containerView.addSubview(titleLabel)
-        containerView.addSubview(subtitleLabel)
+        containerView.addSubview(channelLabel)
         containerView.addSubview(saveButton)
                 
         //top constraint
@@ -585,13 +699,13 @@ class ThreeDimensionContentBaseCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 10))
         
         //top constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 2))
+        addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 2))
         //left constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 4))
+        addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .left, relatedBy: .equal, toItem: thumbnailImageView, attribute: .left, multiplier: 1, constant: 4))
         //height constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 10))
+        addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 10))
         //width constraint
-        addConstraint(NSLayoutConstraint(item: subtitleLabel, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: channelLabel, attribute: .width, relatedBy: .equal, toItem: titleLabel, attribute: .width, multiplier: 1, constant: 0))
         
         //top constraint
         addConstraint(NSLayoutConstraint(item: saveButton, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -2))
