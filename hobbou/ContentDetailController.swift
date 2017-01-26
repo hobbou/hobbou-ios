@@ -25,22 +25,12 @@ class VideoDetailController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
-        
-        //        let height = 9 / 16 * view.frame.width
-        //        videoPlayerView = VideoPlayerView(frame: CGRectMake(0, 0, view.frame.width, height))
-        //        view.addSubview(videoPlayerView!)
-        //        videoPlayerView?.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
-        
+
         collectionView?.backgroundColor = UIColor.red
         collectionView?.alwaysBounceVertical = true
         
         collectionView?.register(RelatedVideoCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(VideoDetailHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
-        
-        //        view.addConstraintsWithFormat("H:|[v0]|", views: collectionView!)
-        //        view.addConstraintsWithFormat("V:|-\(height)-[v0]|", views: collectionView!)
-        //        collectionView?.contentInset = UIEdgeInsetsMake(height, 0, 0, 0)
-        //        collectionView?.frame = CGRectMake(0, height, view.frame.width, view.frame.height)
     }
     
     let minWidth: CGFloat = 140

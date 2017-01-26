@@ -51,9 +51,6 @@ class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     func setupViews() {
-        //addSubview(containerLeft)
-        //addConstraint(format: "H:|[v0]|", views: containerLeft)
-        //addConstraint(format: "V:|-4-[v0]-4-|", views: containerLeft)
         setupCollectionView()
         addSubview(containerRight)
         addConstraint(format: "H:[v0(44)]|", views: containerRight)

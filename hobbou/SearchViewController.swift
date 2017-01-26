@@ -41,7 +41,6 @@ class SearchViewController: UIViewController, UICollectionViewDataSource,  UICol
         collectionView.register(SearchCell.self, forCellWithReuseIdentifier: searchCellId)
         collectionView.alwaysBounceVertical = true
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-        //collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

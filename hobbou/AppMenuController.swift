@@ -71,31 +71,12 @@ class AppMenuController: MenuController {
         let appSearchBarController = AppSearchBarController(rootViewController: searchViewController)
         present(appSearchBarController, animated: true, completion: nil)
     }
-    
-//    lazy var navigationBarController: AppAccountNavigationController = {
-//        let accountViewController = AccountViewController()
-//        let navigationBarController = AppAccountNavigationController(rootViewController: accountViewController)
-//        let closeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-//        let closeImage = UIImage(named: "Delete Filled-100")?.withRenderingMode(.alwaysTemplate)
-//        closeButton.setBackgroundImage(closeImage, for: .normal)
-//        closeButton.tintColor = .white
-//        closeButton.addTarget(self, action: #selector(handleClose), for: .touchUpInside)
-//        closeButton.showsTouchWhenHighlighted = true
-//        let closeBarButtonItem = UIBarButtonItem(customView: closeButton)
-//        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width-32, height: self.view.frame.height))
-//        titleLabel.text = NSLocalizedString("Account!", comment: "for appmenucontroller")
-//        titleLabel.textColor = .white
-//        titleLabel.font = UIFont.systemFont(ofSize: 20)
-//        navigationBarController.navigationItem.titleView = titleLabel
-//        navigationBarController.navigationItem.leftBarButtonItems = [
-//            closeBarButtonItem
-//        ]
-//        return navigationBarController
-//    }()
-    
+        
     func handleProfile(){
         print("handleProfile")
-        present(AppAccountNavigationBarController(rootViewController: AccountViewController())
+        let accountViewController = AccountViewController()
+        accountViewController.appMenuController = self
+        present(AppAccountNavigationBarController(rootViewController: accountViewController)
 , animated: true, completion: nil)
         
     }

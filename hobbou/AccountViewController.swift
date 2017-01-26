@@ -14,6 +14,7 @@ class AccountViewController: UIViewController, UICollectionViewDataSource,  UICo
     let savedListCellId = "savedListCellId"
     let playlistListCellId = "playlistListCellId"
     let configListCellId = "configListCellId"
+    var appMenuController: AppMenuController?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -55,6 +56,7 @@ class AccountViewController: UIViewController, UICollectionViewDataSource,  UICo
         else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: accountListCellId, for: indexPath) as! AccountListCellView
         }
+        cell.accountViewController = self
         return cell
     }
     

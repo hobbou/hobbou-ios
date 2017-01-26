@@ -10,6 +10,7 @@
 		04D472FDEA7670E00EAEECD2 /* Pods_hobbou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E55B32304DABA46F7564E9 /* Pods_hobbou.framework */; };
 		135B6626763E63A333A28884 /* Pods_hobbouUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79AE298953F90EB7AA414C00 /* Pods_hobbouUITests.framework */; };
 		8BED4AAB4766A016B9745EEF /* Pods_hobbouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB66C61FDC6739A5245FB03 /* Pods_hobbouTests.framework */; };
+		9104DD7D1E3852B4000E8537 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9104DD7C1E3852B4000E8537 /* ChannelViewController.swift */; };
 		910FB2F01E1DFFD500C811E3 /* MainPageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2EF1E1DFFD500C811E3 /* MainPageTabViewController.swift */; };
 		910FB2F31E1E040B00C811E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2F21E1E040B00C811E3 /* HomeViewController.swift */; };
 		910FB2F51E1E053000C811E3 /* AdventureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB2F41E1E053000C811E3 /* AdventureViewController.swift */; };
@@ -29,6 +30,7 @@
 		91582EA41E1DE96800EB8654 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91582EA21E1DE96800EB8654 /* LaunchScreen.storyboard */; };
 		91582EAF1E1DE96800EB8654 /* hobbouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91582EAE1E1DE96800EB8654 /* hobbouTests.swift */; };
 		91582EBA1E1DE96800EB8654 /* hobbouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91582EB91E1DE96800EB8654 /* hobbouUITests.swift */; };
+		9168B4741E386076002CFB69 /* ChannelCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168B4731E386076002CFB69 /* ChannelCellView.swift */; };
 		917ECFB01E25022C00E35AB7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */; };
 		917ECFB21E25035400E35AB7 /* AccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB11E25035400E35AB7 /* AccountCellView.swift */; };
 		917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */; };
@@ -60,6 +62,7 @@
 		54099834E826B30575E68DB3 /* Pods-hobbouUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbouUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hobbouUITests/Pods-hobbouUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B6001FEC647EE54A2A14D0A /* Pods-hobbouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hobbouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hobbouTests/Pods-hobbouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		79AE298953F90EB7AA414C00 /* Pods_hobbouUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hobbouUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9104DD7C1E3852B4000E8537 /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		910FB2EF1E1DFFD500C811E3 /* MainPageTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageTabViewController.swift; sourceTree = "<group>"; };
 		910FB2F21E1E040B00C811E3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		910FB2F41E1E053000C811E3 /* AdventureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		91582EB51E1DE96800EB8654 /* hobbouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hobbouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91582EB91E1DE96800EB8654 /* hobbouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hobbouUITests.swift; sourceTree = "<group>"; };
 		91582EBB1E1DE96800EB8654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9168B4731E386076002CFB69 /* ChannelCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCellView.swift; sourceTree = "<group>"; };
 		917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		917ECFB11E25035400E35AB7 /* AccountCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCellView.swift; sourceTree = "<group>"; };
 		917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAccountNavigationBar.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */,
 				917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */,
 				917ECFB71E26370A00E35AB7 /* ContentDetailController.swift */,
+				9104DD7C1E3852B4000E8537 /* ChannelViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				917ECFB11E25035400E35AB7 /* AccountCellView.swift */,
 				917ECFB91E26377800E35AB7 /* ContentDetailCellView.swift */,
 				917ECFBB1E263B2500E35AB7 /* InterpolationLayer.swift */,
+				9168B4731E386076002CFB69 /* ChannelCellView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -548,9 +554,11 @@
 				917ECFB01E25022C00E35AB7 /* AccountViewController.swift in Sources */,
 				917ECFBA1E26377800E35AB7 /* ContentDetailCellView.swift in Sources */,
 				910FB2F71E1E058F00C811E3 /* HoBViewController.swift in Sources */,
+				9104DD7D1E3852B4000E8537 /* ChannelViewController.swift in Sources */,
 				917ECFB61E262D8D00E35AB7 /* ContentLauncher.swift in Sources */,
 				910FB33D1E1E5D5200C811E3 /* HomeCellView.swift in Sources */,
 				910FB3431E23468F00C811E3 /* AppSearchBarController.swift in Sources */,
+				9168B4741E386076002CFB69 /* ChannelCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

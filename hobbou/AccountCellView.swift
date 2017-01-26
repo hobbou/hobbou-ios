@@ -111,6 +111,19 @@ class AccountListCellView: BaseCell, UICollectionViewDataSource,  UICollectionVi
         return CGSize(width: collectionView.frame.width, height: cellHeight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            //accountViewController?.present(ChannelViewController(), animated: true, completion: nil)
+            accountViewController?.dismiss(animated: true, completion: {
+                let channelViewController =  ChannelViewController()
+                channelViewController.navigationItem.title = "Channel Name"
+                self.accountViewController?.appMenuController?.navigationController?.navigationBar.tintColor = .white
+                self.accountViewController?.appMenuController?.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+                self.accountViewController?.appMenuController?.navigationController?.pushViewController(channelViewController, animated: true)
+            })
+        }
+    }
+    
 }
 
 class SavedListCellView: BaseCell, UICollectionViewDataSource,  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
