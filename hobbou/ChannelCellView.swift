@@ -190,7 +190,6 @@ class FeaturedChannelCell: BaseCell {
     
 }
 
-
 class MenuContentChannelBarCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
@@ -316,7 +315,6 @@ class MenuContentChannelCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
     }
 }
-
 
 class BodyChannelCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
