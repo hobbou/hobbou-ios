@@ -191,11 +191,12 @@ class FeaturedChannelCell: BaseCell {
 }
 
 
-class MenuContentChannelBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MenuContentChannelBarCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     
     let menuNames = [
+        NSLocalizedString("Timeline", comment: "for menu content channel bar"),
         NSLocalizedString("Content", comment: "for menu content channel bar"),
         NSLocalizedString("Playlists", comment: "for menu content channel bar"),
         NSLocalizedString("Discussion", comment: "for menu content channel bar")
@@ -243,7 +244,7 @@ class MenuContentChannelBar: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -272,7 +273,7 @@ class MenuContentChannelBar: UIView, UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width / 3, height: frame.height)
+        return CGSize(width: frame.width / 4, height: frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -317,22 +318,174 @@ class MenuContentChannelCell: BaseCell {
 }
 
 
-class ContentChannelCell: BaseCell {
+class BodyChannelCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
-    lazy var menuBar: MenuContentChannelBar = {
-        let mb = MenuContentChannelBar()
-        //mb.postController = self
-        return mb
+//    lazy var menuBar: MenuContentChannelBar = {
+//        let mb = MenuContentChannelBar()
+//        //mb.postController = self
+//        return mb
+//    }()
+    
+//    private func setupMenuBar(){
+//        addSubview(menuBar)
+//        addConstraint(format: "H:|[v0]|", views: menuBar)
+//        addConstraint(format: "V:|[v0(30)]", views: menuBar)
+//    }
+    
+    let timelineCellId = "timelineCellId"
+    let contentCellId = "contentCellId"
+    let playlistCellId = "playlistCellId"
+    let discussionCellId = "discussionCellId"
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.delegate = self
+        cv.dataSource = self
+        return cv
     }()
-    
-    private func setupMenuBar(){
-        addSubview(menuBar)
-        addConstraint(format: "H:|[v0]|", views: menuBar)
-        addConstraint(format: "V:|[v0(30)]", views: menuBar)
-    }
     
     override func setupViews() {
         super.setupViews()
-        setupMenuBar()
+        backgroundColor = .red
+        setupCollectionView()
     }
+    
+    func setupCollectionView(){
+        addSubview(collectionView)
+        addConstraint(format: "H:|[v0]|", views: collectionView)
+        addConstraint(format: "V:|[v0]|", views: collectionView)
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.minimumLineSpacing = 0
+        }
+        collectionView.backgroundColor = UIColor(red: 255/255, green: 251/255, blue: 245/255, alpha: 1)
+        collectionView.register(TimelineCell.self, forCellWithReuseIdentifier: timelineCellId)
+        collectionView.register(BaseCell.self, forCellWithReuseIdentifier: contentCellId)
+        //collectionView.register(BaseCell.self, forCellWithReuseIdentifier: playlistCellId)
+        //collectionView.register(BaseCell.self, forCellWithReuseIdentifier: discussionCellId)
+        collectionView.isPagingEnabled = true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: timelineCellId, for: indexPath) as! TimelineCell
+        if indexPath.item == 1 {
+            let contentCell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCellId, for: indexPath) as! BaseCell
+            return contentCell
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.width, height: frame.height)
+    }
+    
+}
+
+class TimelineCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    let postCellId = "postCellId"
+    let shareCellId = "shareCellId"
+    private var lastContentOffset: CGFloat = 0
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.delegate = self
+        cv.dataSource = self
+        return cv
+    }()
+    
+    
+    override func setupViews() {
+        setupCollectionView()
+    }
+    
+    func setupCollectionView(){
+        addSubview(collectionView)
+        addConstraint(format: "H:|[v0]|", views: collectionView)
+        addConstraint(format: "V:|[v0]|", views: collectionView)
+        collectionView.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
+        collectionView.register(PostCell.self, forCellWithReuseIdentifier: postCellId)
+        collectionView.register(ShareCell.self, forCellWithReuseIdentifier: shareCellId)
+        collectionView.alwaysBounceVertical = true
+        collectionView.contentInset = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: postCellId, for: indexPath) as! PostCell
+        if indexPath.item == 1 {
+            let shareCell = collectionView.dequeueReusableCell(withReuseIdentifier: shareCellId, for: indexPath) as! ShareCell
+            return shareCell
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let contentLauncher = ContentLauncher()
+        contentLauncher.showVideoPlayer()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = (frame.width - 16 - 16) * 9 / 16
+        return CGSize(width: frame.width, height: (height + 16 + 68)*2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? PostCell {
+            cell.showContentContainer()
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        //print("begin")
+        for cell in collectionView.visibleCells {
+            if let cell = cell as? PostCell{
+                cell.showContentContainer()
+            }
+            if let cell = cell as? ShareCell{
+                cell.showContentContainer()
+            }
+        }
+        
+        // update the new position acquired
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //print("end")
+        for cell in collectionView.visibleCells {
+            if let cell = cell as? PostCell{
+                cell.hideContentContainer()
+            }
+            if let cell = cell as? ShareCell{
+                cell.hideContentContainer()
+            }
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate{
+            //print("end")
+            for cell in collectionView.visibleCells {
+                if let cell = cell as? PostCell{
+                    cell.hideContentContainer()
+                }
+                if let cell = cell as? ShareCell{
+                    cell.hideContentContainer()
+                }
+            }
+            
+        }
+    }
+    
 }

@@ -30,6 +30,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
     lazy var categorySelectionView: CategorySelectionView = {
         let categView = CategorySelectionView()
         categView.translatesAutoresizingMaskIntoConstraints = false
+        categView.adventureViewController = self
         return categView
     }()
     

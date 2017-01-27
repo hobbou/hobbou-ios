@@ -26,6 +26,7 @@ class HoBViewController: UIViewController, UICollectionViewDataSource, UICollect
     lazy var categorySelectionView: CategorySelectionView = {
         let categView = CategorySelectionView()
         categView.translatesAutoresizingMaskIntoConstraints = false
+        categView.hobViewController = self
         return categView
     }()
     

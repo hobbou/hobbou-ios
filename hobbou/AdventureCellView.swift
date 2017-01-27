@@ -12,6 +12,8 @@ import Material
 class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let categoryListCellId = "categoryListCellId"
+    var adventureViewController: AdventureViewController?
+    var hobViewController: HoBViewController?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -64,6 +66,12 @@ class CategorySelectionView: UIView, UICollectionViewDataSource, UICollectionVie
     
     @objc func handleMore(){
         print("handleMore")
+        let categoryPickerViewController = CategoryPickerViewController()
+        //categoryPickerViewController.appMenuController = self
+        adventureViewController?.present(AppCategoryPickerNavigationBarController(rootViewController: categoryPickerViewController)
+            , animated: true, completion: nil)
+        hobViewController?.present(AppCategoryPickerNavigationBarController(rootViewController: categoryPickerViewController)
+            , animated: true, completion: nil)
     }
     
     func setupCollectionView(){

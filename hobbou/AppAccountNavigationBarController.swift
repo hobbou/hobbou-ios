@@ -21,7 +21,6 @@ class AppAccountNavigationBarController: StatusBarController {
         }
     }
     
-    
     open override func layoutSubviews() {
         super.layoutSubviews()
         

@@ -12,11 +12,13 @@ class ChannelViewController: UIViewController, UICollectionViewDataSource,  UICo
     
     let headerCellId = "headerCellId"
     let featuredCellId = "featuredCellId"
+    let bodyCellId = "bodyCellId"
     let contentMenuCellId = "contentMenuCellId"
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
+        layout.sectionHeadersPinToVisibleBounds = true
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
@@ -44,8 +46,8 @@ class ChannelViewController: UIViewController, UICollectionViewDataSource,  UICo
         navigationItem.rightBarButtonItems = [
             moreBarButtonItem
         ]
-        
         setupCollectionView()
+
     }
     
     func handleMore(){
@@ -59,7 +61,8 @@ class ChannelViewController: UIViewController, UICollectionViewDataSource,  UICo
         collectionView.backgroundColor = UIColor(red: 245/255, green: 240/255, blue: 238/255, alpha: 1)
         collectionView.register(HeaderChannelCell.self, forCellWithReuseIdentifier: headerCellId)
         collectionView.register(FeaturedChannelCell.self, forCellWithReuseIdentifier: featuredCellId)
-        collectionView.register(ContentChannelCell.self, forCellWithReuseIdentifier: contentMenuCellId)
+        collectionView.register(BodyChannelCell.self, forCellWithReuseIdentifier: bodyCellId)
+        collectionView.register(MenuContentChannelBarCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: contentMenuCellId)
         collectionView.alwaysBounceVertical = true
         //collectionView.contentInset = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
         //collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 70, left: 0, bottom: 0, right: 0)
@@ -67,10 +70,10 @@ class ChannelViewController: UIViewController, UICollectionViewDataSource,  UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerCellId, for: indexPath) as! BaseCell
-        if indexPath.item == 1 {
+        if indexPath.item == 1 && indexPath.section == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: featuredCellId, for: indexPath) as! FeaturedChannelCell
-        }else if indexPath.item == 2 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentMenuCellId, for: indexPath) as! ContentChannelCell
+        }else if indexPath.section == 1 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: bodyCellId, for: indexPath) as! BodyChannelCell
         }
         else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: headerCellId, for: indexPath) as! HeaderChannelCell
@@ -79,7 +82,27 @@ class ChannelViewController: UIViewController, UICollectionViewDataSource,  UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if section == 0 {
+            return 2
+        } else {
+            return 1
+        }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: contentMenuCellId, for: indexPath) as! MenuContentChannelBarCell
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return .zero
+        }
+        return CGSize(width: view.frame.height, height: 30)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -87,7 +110,7 @@ class ChannelViewController: UIViewController, UICollectionViewDataSource,  UICo
         if indexPath.item == 1 {
             let height = (view.frame.width - 16 - 16) * 9 / 16
             size = CGSize(width: view.frame.width, height: height + 16 + 68)
-        } else if indexPath.item == 2 {
+        } else if indexPath.section == 1{
             size = CGSize(width: view.frame.width, height: view.frame.height)
         } else{
             size = CGSize(width: view.frame.width, height: 200)

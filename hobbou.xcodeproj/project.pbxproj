@@ -24,6 +24,9 @@
 		910FB3431E23468F00C811E3 /* AppSearchBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3421E23468F00C811E3 /* AppSearchBarController.swift */; };
 		910FB3451E238D5B00C811E3 /* SeparatedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3441E238D5B00C811E3 /* SeparatedCellView.swift */; };
 		910FB3471E238DA700C811E3 /* AdventureCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910FB3461E238DA700C811E3 /* AdventureCellView.swift */; };
+		9124D0FE1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D0FD1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift */; };
+		9124D1001E3B05BD00BB7C44 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D0FF1E3B05BD00BB7C44 /* CategoryPickerViewController.swift */; };
+		9124D1021E3B068300BB7C44 /* CategoryPickerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D1011E3B068300BB7C44 /* CategoryPickerCellView.swift */; };
 		91582E9A1E1DE96800EB8654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91582E991E1DE96800EB8654 /* AppDelegate.swift */; };
 		91582E9F1E1DE96800EB8654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91582E9D1E1DE96800EB8654 /* Main.storyboard */; };
 		91582EA11E1DE96800EB8654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91582EA01E1DE96800EB8654 /* Assets.xcassets */; };
@@ -33,7 +36,7 @@
 		9168B4741E386076002CFB69 /* ChannelCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9168B4731E386076002CFB69 /* ChannelCellView.swift */; };
 		917ECFB01E25022C00E35AB7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */; };
 		917ECFB21E25035400E35AB7 /* AccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB11E25035400E35AB7 /* AccountCellView.swift */; };
-		917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */; };
+		917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBarController.swift */; };
 		917ECFB61E262D8D00E35AB7 /* ContentLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB51E262D8D00E35AB7 /* ContentLauncher.swift */; };
 		917ECFB81E26370A00E35AB7 /* ContentDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB71E26370A00E35AB7 /* ContentDetailController.swift */; };
 		917ECFBA1E26377800E35AB7 /* ContentDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917ECFB91E26377800E35AB7 /* ContentDetailCellView.swift */; };
@@ -76,6 +79,9 @@
 		910FB3421E23468F00C811E3 /* AppSearchBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSearchBarController.swift; sourceTree = "<group>"; };
 		910FB3441E238D5B00C811E3 /* SeparatedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatedCellView.swift; sourceTree = "<group>"; };
 		910FB3461E238DA700C811E3 /* AdventureCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdventureCellView.swift; sourceTree = "<group>"; };
+		9124D0FD1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCategoryPickerNavigationBarController.swift; sourceTree = "<group>"; };
+		9124D0FF1E3B05BD00BB7C44 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		9124D1011E3B068300BB7C44 /* CategoryPickerCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCellView.swift; sourceTree = "<group>"; };
 		91582E961E1DE96800EB8654 /* hobbou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hobbou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91582E991E1DE96800EB8654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91582E9E1E1DE96800EB8654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,7 +97,7 @@
 		9168B4731E386076002CFB69 /* ChannelCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCellView.swift; sourceTree = "<group>"; };
 		917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		917ECFB11E25035400E35AB7 /* AccountCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCellView.swift; sourceTree = "<group>"; };
-		917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAccountNavigationBar.swift; sourceTree = "<group>"; };
+		917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAccountNavigationBarController.swift; sourceTree = "<group>"; };
 		917ECFB51E262D8D00E35AB7 /* ContentLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentLauncher.swift; sourceTree = "<group>"; };
 		917ECFB71E26370A00E35AB7 /* ContentDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailController.swift; sourceTree = "<group>"; };
 		917ECFB91E26377800E35AB7 /* ContentDetailCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDetailCellView.swift; sourceTree = "<group>"; };
@@ -166,9 +172,11 @@
 				910FB3391E1E54CB00C811E3 /* MainNavigationController.swift */,
 				910FB3421E23468F00C811E3 /* AppSearchBarController.swift */,
 				917ECFAF1E25022C00E35AB7 /* AccountViewController.swift */,
-				917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBar.swift */,
+				917ECFB31E250DFD00E35AB7 /* AppAccountNavigationBarController.swift */,
 				917ECFB71E26370A00E35AB7 /* ContentDetailController.swift */,
 				9104DD7C1E3852B4000E8537 /* ChannelViewController.swift */,
+				9124D0FD1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift */,
+				9124D0FF1E3B05BD00BB7C44 /* CategoryPickerViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 				917ECFB91E26377800E35AB7 /* ContentDetailCellView.swift */,
 				917ECFBB1E263B2500E35AB7 /* InterpolationLayer.swift */,
 				9168B4731E386076002CFB69 /* ChannelCellView.swift */,
+				9124D1011E3B068300BB7C44 /* CategoryPickerCellView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -538,9 +547,11 @@
 			files = (
 				917ECFBC1E263B2500E35AB7 /* InterpolationLayer.swift in Sources */,
 				910FB33A1E1E54CB00C811E3 /* MainNavigationController.swift in Sources */,
+				9124D1001E3B05BD00BB7C44 /* CategoryPickerViewController.swift in Sources */,
 				910FB3411E2340F100C811E3 /* SearchViewController.swift in Sources */,
 				910FB33F1E1FA6B600C811E3 /* BaseContentView.swift in Sources */,
 				910FB2F01E1DFFD500C811E3 /* MainPageTabViewController.swift in Sources */,
+				9124D1021E3B068300BB7C44 /* CategoryPickerCellView.swift in Sources */,
 				910FB2F51E1E053000C811E3 /* AdventureViewController.swift in Sources */,
 				910FB3451E238D5B00C811E3 /* SeparatedCellView.swift in Sources */,
 				91582E9A1E1DE96800EB8654 /* AppDelegate.swift in Sources */,
@@ -549,8 +560,9 @@
 				917ECFB21E25035400E35AB7 /* AccountCellView.swift in Sources */,
 				910FB3381E1E3E4E00C811E3 /* Extensions.swift in Sources */,
 				910FB3471E238DA700C811E3 /* AdventureCellView.swift in Sources */,
-				917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBar.swift in Sources */,
+				917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBarController.swift in Sources */,
 				910FB2F31E1E040B00C811E3 /* HomeViewController.swift in Sources */,
+				9124D0FE1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift in Sources */,
 				917ECFB01E25022C00E35AB7 /* AccountViewController.swift in Sources */,
 				917ECFBA1E26377800E35AB7 /* ContentDetailCellView.swift in Sources */,
 				910FB2F71E1E058F00C811E3 /* HoBViewController.swift in Sources */,
