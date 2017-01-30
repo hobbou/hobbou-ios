@@ -203,10 +203,14 @@ class VideoDetailView: UIView {
         //videoPlayerView?.layer.frame = CGRect(x: 0, y: min(heightDiff, maxHeight - minHeight - rightMargin), width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
         //videoPlayerView?.frame = videoPlayerView!.playerLayer!.frame
         videoDetailCollectionView.alpha = max(0, 1 - percentageDisplaced * 3)
-        //videoDetailCollectionView
         let x = max(0, min(heightDiff * 16/9 - percentageDisplaced * rightMargin, rightMargin))
         let y = max(0, min(val, screenBounds.height - maxHeight + 80))
-        frame = CGRect(x: x, y: y, width: max(playerWidth, minWidth), height: max(playerHeight, minHeight))
+        var frameHeight = playerHeight
+        if videoDetailCollectionView.alpha == 1{
+            frameHeight = screenBounds.height
+        }
+        frame = CGRect(x: x, y: y, width: max(playerWidth, minWidth), height: max(frameHeight, minHeight))
+        print("frame:", frame)
         videoPlayerView?.controlsContainerView.alpha = 1 - val / (screenBounds.height - minHeight) * 1.2
         //backgroundColor = .red
     }

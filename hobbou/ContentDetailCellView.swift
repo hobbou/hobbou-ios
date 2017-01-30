@@ -107,7 +107,7 @@ class VideoDetailHeader: BaseCell {
         return label
     }()
     
-    let subscribeButton: UIButton = {
+    lazy var subscribeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "subscribe")?.withRenderingMode(.alwaysOriginal), for: UIControlState())
         button.setTitleColor(.white, for: .normal)
@@ -115,8 +115,13 @@ class VideoDetailHeader: BaseCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0)
         button.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 19/255, alpha: 1)
+        button.addTarget(self, action: #selector(handleSubscribe), for: .touchUpInside)
         return button
     }()
+    
+    func handleSubscribe(){
+        print("handleSubscribe")
+    }
     
     override func setupViews() {
         super.setupViews()
