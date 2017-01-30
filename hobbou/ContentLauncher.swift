@@ -116,23 +116,39 @@ class VideoDetailView: UIView {
     let minHeight: CGFloat = 100
     let rightMargin: CGFloat = 4
     let screenBounds = UIScreen.main.bounds
+    var modePan = ""
     
     var partialTranslationValue: CGFloat = 0
     
     func handlePan2(_ gesture: UIPanGestureRecognizer) {
         //where your finger is
         let translation = gesture.translation(in: self)
-        
-        if gesture.state == .ended {
-            partialTranslationValue = translation.y
-            handleGestureEnd()
+        //print("y:", translation.y)
+        //print("x:", translation.x)
+        //print("modepan:", modePan)
+        if (abs(translation.y) > abs(translation.x) || modePan == "Y") && modePan != "X"{
+            if gesture.state == .ended {
+                partialTranslationValue = translation.y
+                handleGestureEnd()
+            } else {
+                modePan = "Y"
+            }
+            let maxHeight = 9 / 16 * screenBounds.width
+            handleTranslationValue(translation.y + (videoPlayerView!.isMinimized ? screenBounds.height - maxHeight : 0))
         }
-        
-        let maxHeight = 9 / 16 * screenBounds.width
-        handleTranslationValue(translation.y + (videoPlayerView!.isMinimized ? screenBounds.height - maxHeight : 0))
+        else if (abs(translation.y) < abs(translation.x) || modePan == "X") && modePan != "Y" && videoPlayerView!.isMinimized{
+            if gesture.state == .ended {
+                partialTranslationValue = translation.x
+                handleGestureEndDismiss()
+            } else {
+                modePan = "X"
+            }
+            handleTranslationValueDismiss(translation.x)
+        }
     }
     
     func handleGestureEnd() {
+        modePan = ""
         let maxHeight = 9 / 16 * screenBounds.width
         if videoPlayerView!.isMinimized {
             startInterpolationInterpolationHandler({ (value) in
@@ -181,6 +197,21 @@ class VideoDetailView: UIView {
             }, duration: 0.25)
         }
     }
+
+    func handleGestureEndDismiss() {
+        modePan = ""
+        if self.partialTranslationValue < self.screenBounds.width / 4  {
+            startInterpolationInterpolationHandler({ (value) in
+                self.handleTranslationValueDismiss(self.rightMargin)
+                self.alpha = 1
+            })
+        } else {
+            startInterpolationInterpolationHandler({ (value) in
+                self.removeFromSuperview()
+            })
+        }
+    }
+    
     
     func handleTranslationValue(_ value: CGFloat) {
 
@@ -210,9 +241,25 @@ class VideoDetailView: UIView {
             frameHeight = screenBounds.height
         }
         frame = CGRect(x: x, y: y, width: max(playerWidth, minWidth), height: max(frameHeight, minHeight))
-        print("frame:", frame)
+        //print("frame:", frame)
         videoPlayerView?.controlsContainerView.alpha = 1 - val / (screenBounds.height - minHeight) * 1.2
         //backgroundColor = .red
+    }
+    
+    func handleTranslationValueDismiss(_ value: CGFloat) {
+        let maxHeight = 9 / 16 * screenBounds.width
+        let val = max(0, value)
+        let minWidth = minHeight * 16 / 9
+        let percentageDisplaced = val / (screenBounds.height) * 0.8
+        let heightDiff = percentageDisplaced * maxHeight
+        let widthDiff = 16 / 9 * heightDiff
+        
+        let playerHeight = maxHeight - heightDiff
+        let playerWidth = screenBounds.width - widthDiff
+        let x = max(0, val)
+        let y = max(0, screenBounds.height - maxHeight + 80)
+        frame = CGRect(x: x, y: y, width: playerWidth, height: playerHeight)
+        alpha = 1 - val / (screenBounds.width - minWidth) * 1.2
     }
     
     required init?(coder aDecoder: NSCoder) {
