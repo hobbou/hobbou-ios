@@ -79,7 +79,7 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: featureCellId, for: indexPath) as! BaseCell
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: recomendedCellId, for: indexPath) as! RecomendedBaseListCell
         if indexPath.item == 1 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: recomendedCellId, for: indexPath) as! RecomendedBaseListCell
         }else if indexPath.item == 2 {
@@ -87,8 +87,10 @@ class AdventureViewController: UIViewController, UICollectionViewDataSource, UIC
         }else if indexPath.item == 3 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: randomCellId, for: indexPath) as! RandomListCell
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: featureCellId, for: indexPath) as! FeaturedListCell
+            let featuredCell = collectionView.dequeueReusableCell(withReuseIdentifier: featureCellId, for: indexPath) as! FeaturedListCell
+            return featuredCell
         }
+        cell.adventureViewController = self
         return cell
     }
 

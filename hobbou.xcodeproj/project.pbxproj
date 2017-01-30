@@ -27,6 +27,8 @@
 		9124D0FE1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D0FD1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift */; };
 		9124D1001E3B05BD00BB7C44 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D0FF1E3B05BD00BB7C44 /* CategoryPickerViewController.swift */; };
 		9124D1021E3B068300BB7C44 /* CategoryPickerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D1011E3B068300BB7C44 /* CategoryPickerCellView.swift */; };
+		9124D1041E3EF31B00BB7C44 /* MoreContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D1031E3EF31B00BB7C44 /* MoreContentViewController.swift */; };
+		9124D1061E3EF3BB00BB7C44 /* AppMoreContentNavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9124D1051E3EF3BB00BB7C44 /* AppMoreContentNavigationBarController.swift */; };
 		91582E9A1E1DE96800EB8654 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91582E991E1DE96800EB8654 /* AppDelegate.swift */; };
 		91582E9F1E1DE96800EB8654 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91582E9D1E1DE96800EB8654 /* Main.storyboard */; };
 		91582EA11E1DE96800EB8654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91582EA01E1DE96800EB8654 /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		9124D0FD1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCategoryPickerNavigationBarController.swift; sourceTree = "<group>"; };
 		9124D0FF1E3B05BD00BB7C44 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		9124D1011E3B068300BB7C44 /* CategoryPickerCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCellView.swift; sourceTree = "<group>"; };
+		9124D1031E3EF31B00BB7C44 /* MoreContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreContentViewController.swift; sourceTree = "<group>"; };
+		9124D1051E3EF3BB00BB7C44 /* AppMoreContentNavigationBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMoreContentNavigationBarController.swift; sourceTree = "<group>"; };
 		91582E961E1DE96800EB8654 /* hobbou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hobbou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91582E991E1DE96800EB8654 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91582E9E1E1DE96800EB8654 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				9104DD7C1E3852B4000E8537 /* ChannelViewController.swift */,
 				9124D0FD1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift */,
 				9124D0FF1E3B05BD00BB7C44 /* CategoryPickerViewController.swift */,
+				9124D1031E3EF31B00BB7C44 /* MoreContentViewController.swift */,
+				9124D1051E3EF3BB00BB7C44 /* AppMoreContentNavigationBarController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -551,6 +557,7 @@
 				910FB3411E2340F100C811E3 /* SearchViewController.swift in Sources */,
 				910FB33F1E1FA6B600C811E3 /* BaseContentView.swift in Sources */,
 				910FB2F01E1DFFD500C811E3 /* MainPageTabViewController.swift in Sources */,
+				9124D1061E3EF3BB00BB7C44 /* AppMoreContentNavigationBarController.swift in Sources */,
 				9124D1021E3B068300BB7C44 /* CategoryPickerCellView.swift in Sources */,
 				910FB2F51E1E053000C811E3 /* AdventureViewController.swift in Sources */,
 				910FB3451E238D5B00C811E3 /* SeparatedCellView.swift in Sources */,
@@ -562,6 +569,7 @@
 				910FB3471E238DA700C811E3 /* AdventureCellView.swift in Sources */,
 				917ECFB41E250DFD00E35AB7 /* AppAccountNavigationBarController.swift in Sources */,
 				910FB2F31E1E040B00C811E3 /* HomeViewController.swift in Sources */,
+				9124D1041E3EF31B00BB7C44 /* MoreContentViewController.swift in Sources */,
 				9124D0FE1E3B051C00BB7C44 /* AppCategoryPickerNavigationBarController.swift in Sources */,
 				917ECFB01E25022C00E35AB7 /* AccountViewController.swift in Sources */,
 				917ECFBA1E26377800E35AB7 /* ContentDetailCellView.swift in Sources */,

@@ -1,15 +1,15 @@
 //
-//  CategoryPickerNavigationBar.swift
+//  AppMoreContent.swift
 //  hobbou
 //
-//  Created by Hans Yonathan on 27/1/2017.
+//  Created by Hans Yonathan on 30/1/2017.
 //  Copyright © 2017 Hans Yonathan. All rights reserved.
 //
 
 import UIKit
 import Material
 
-class AppCategoryPickerNavigationBarController: StatusBarController {
+class AppMoreContentNavigationBarController: StatusBarController {
     
     private var closeButton: IconButton!
     var titleLabel: UILabel!
@@ -60,7 +60,7 @@ class AppCategoryPickerNavigationBarController: StatusBarController {
         titleLabel = UILabel()
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
-        titleLabel.text = NSLocalizedString("Category", comment: "for category picker")
+        titleLabel.text = NSLocalizedString("Recomended", comment: "for app more content")
     }
     
     @objc private func handleCloseButton(){
@@ -70,7 +70,7 @@ class AppCategoryPickerNavigationBarController: StatusBarController {
     
 }
 
-extension AppCategoryPickerNavigationBarController{
+extension AppMoreContentNavigationBarController{
     
     /// Prepares the statusBar.
     fileprivate func prepareStatusBar() {

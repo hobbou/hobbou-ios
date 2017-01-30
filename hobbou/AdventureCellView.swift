@@ -188,6 +188,8 @@ class FeaturedListCell: BaseCell, UICollectionViewDataSource, UICollectionViewDe
 class RecomendedBaseListCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let recomendedCellId = "recomendedCellId"
+    var adventureViewController: AdventureViewController?
+    var hobViewController: HoBViewController?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -286,7 +288,10 @@ class RecomendedBaseListCell: BaseCell, UICollectionViewDataSource, UICollection
     }
     
     func handleMore(){
-        print("handlemore")
+        let moreContentViewController = MoreContentViewController()
+        let appMoreContentNavigationBarController = AppMoreContentNavigationBarController(rootViewController: moreContentViewController)
+        appMoreContentNavigationBarController.titleLabel.text = titleLabel.text
+        adventureViewController?.present(appMoreContentNavigationBarController, animated: true, completion: nil)
     }
     
 }
@@ -506,7 +511,6 @@ class FeaturedCell: BaseCell {
         //width constraint
         addConstraint(NSLayoutConstraint(item: userProfileImageView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 44))
         
-        
         //top constraint
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbnailImageView, attribute: .top, multiplier: 1, constant: 8))
         //left constraint
@@ -569,7 +573,6 @@ class FeaturedCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: contentDateAgoLabel, attribute: .left, relatedBy: .equal, toItem: contentCalendarImageView, attribute: .right, multiplier: 1, constant: 0))
         //height constraint
         addConstraint(NSLayoutConstraint(item: contentDateAgoLabel, attribute: .height, relatedBy: .equal, toItem: channelLabel, attribute: .height, multiplier: 1, constant: 0))
-        
         
         //top constraint
         addConstraint(NSLayoutConstraint(item: saveButton, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: -4))

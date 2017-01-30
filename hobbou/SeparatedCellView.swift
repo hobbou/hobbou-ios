@@ -248,6 +248,10 @@ class SearchCell: SeparatedListContentBaseCell {
     
 }
 
+class MoreContentCell: SeparatedListContentBaseCell {
+    
+}
+
 class HoBCell: SeparatedListContentBaseCell {
     
     let rankLabel: UILabel = {
