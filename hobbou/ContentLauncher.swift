@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreMotion
 
 class ContentLauncher: NSObject {
     
@@ -63,7 +64,6 @@ class VideoDetailView: UIView {
         videoPlayerView = VideoPlayerView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         videoPlayerView?.videoDetailView = self
         videoPlayerView?.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan2)))
-        
         videoPlayerView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         
         addSubview(videoDetailCollectionView)
@@ -146,6 +146,7 @@ class VideoDetailView: UIView {
             handleTranslationValueDismiss(translation.x)
         }
     }
+    
     
     func handleGestureEnd() {
         modePan = ""
@@ -403,6 +404,8 @@ class VideoPlayerView: UIView {
     }()
     
     var isPlaying = false
+    var isFullScreen = false
+    let screenBounds = UIScreen.main.bounds
     var isMinimized = false {
         didSet {
             if isMinimized == false {
@@ -426,11 +429,32 @@ class VideoPlayerView: UIView {
     }
     
     func handleFullscreen(){
-        print("handleFullscreen")
+        if isFullScreen{
+            handleUnFullscreen()
+        } else {
+            print("handleFullscreen")
+            UIView.animate(withDuration: 0.5) {
+                self.layer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(M_PI_2)))
+                self.layer.frame = CGRect(x: 0, y: 0, width:self.videoDetailView!.frame.width, height: self.videoDetailView!.frame.height)
+                self.playerLayer?.frame = CGRect(x: 0, y: 0, width:self.videoDetailView!.frame.height, height: self.videoDetailView!.frame.width)
+            }
+        }
+        isFullScreen = !isFullScreen
+    }
+    
+    func handleUnFullscreen(){
+        print("handleUnFullscreen")
+        UIView.animate(withDuration: 0.5) {
+            self.layer.setAffineTransform(CGAffineTransform(rotationAngle: 0))
+            //need to continue
+            //self.layer.frame = CGRect(x: 0, y: 0, width:self.screenBounds.height, height: self.screenBounds.width)
+            //self.playerLayer?.frame = CGRect(x: 0, y: 0, width:self.screenBounds.height, height: self.screenBounds.width)
+        }
     }
     
     var widthConstraint: NSLayoutConstraint?
     var trackHandleLeftConstraint: NSLayoutConstraint?
+    var uMM: CMMotionManager!
     
     func handlePause() {
         if isPlaying {
@@ -474,7 +498,7 @@ class VideoPlayerView: UIView {
     lazy var videoSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.minimumTrackTintColor = .red
+        slider.minimumTrackTintColor = UIColor(red: 255/255, green: 0/255, blue: 19/255, alpha: 1)
         slider.maximumTrackTintColor = .white
         slider.setThumbImage(UIImage(named: "thumb"), for: UIControlState())
         
@@ -505,52 +529,59 @@ class VideoPlayerView: UIView {
         setupPlayerView()
         setupGradientLayer()
         addSubview(controlsContainerView)
-        addConstraint(format: "H:|[v0]|", views: controlsContainerView)
-        addConstraint(format: "V:|[v0]|", views: controlsContainerView)
+        //controlsContainerView.frame = playerLayer!.frame
+        //addConstraint(format: "H:|[v0]|", views: controlsContainerView)
+        //addConstraint(format: "V:|[v0]|", views: controlsContainerView)
+        controlsContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        controlsContainerView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
+        controlsContainerView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        controlsContainerView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         
         controlsContainerView.addSubview(activityIndicatorView)
-        activityIndicatorView.centerXAnchor.constraint(equalTo: controlsContainerView.centerXAnchor).isActive = true
-        activityIndicatorView.centerYAnchor.constraint(equalTo: controlsContainerView.centerYAnchor).isActive = true
+        activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         controlsContainerView.addSubview(pausePlayButton)
-        pausePlayButton.centerXAnchor.constraint(equalTo: controlsContainerView.centerXAnchor).isActive = true
-        pausePlayButton.centerYAnchor.constraint(equalTo: controlsContainerView.centerYAnchor).isActive = true
+        pausePlayButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        pausePlayButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         pausePlayButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         pausePlayButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         controlsContainerView.addSubview(fullscreenButton)
-        fullscreenButton.rightAnchor.constraint(equalTo: controlsContainerView.rightAnchor, constant: -8).isActive = true
-        fullscreenButton.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor, constant: -2).isActive = true
+        fullscreenButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 30).isActive = true
+        fullscreenButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 30).isActive = true
+        //fullscreenButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8).isActive = true
+        //fullscreenButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
         fullscreenButton.widthAnchor.constraint(equalToConstant: 22).isActive = true
         fullscreenButton.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         controlsContainerView.addSubview(videoLengthLabel)
         videoLengthLabel.rightAnchor.constraint(equalTo: fullscreenButton.leftAnchor, constant: -8).isActive = true
-        videoLengthLabel.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor, constant: -2).isActive = true
+        videoLengthLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
         videoLengthLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         videoLengthLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         controlsContainerView.addSubview(currentTimeLabel)
-        currentTimeLabel.leftAnchor.constraint(equalTo: controlsContainerView.leftAnchor, constant: 8).isActive = true
-        currentTimeLabel.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor, constant: -2).isActive = true
+        currentTimeLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8).isActive = true
+        currentTimeLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2).isActive = true
         currentTimeLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         currentTimeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         controlsContainerView.addSubview(videoSlider)
         videoSlider.rightAnchor.constraint(equalTo: videoLengthLabel.leftAnchor).isActive = true
-        videoSlider.bottomAnchor.constraint(equalTo: controlsContainerView.bottomAnchor).isActive = true
+        videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         videoSlider.leftAnchor.constraint(equalTo: currentTimeLabel.rightAnchor).isActive = true
         videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         controlsContainerView.addSubview(minimizeButton)
-        minimizeButton.topAnchor.constraint(equalTo: controlsContainerView.topAnchor, constant: 10).isActive = true
-        minimizeButton.leftAnchor.constraint(equalTo: controlsContainerView.leftAnchor, constant: 10).isActive = true
+        minimizeButton.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        minimizeButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
         minimizeButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
         minimizeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         controlsContainerView.addSubview(userProfileImageView)
-        userProfileImageView.topAnchor.constraint(equalTo: controlsContainerView.topAnchor, constant: 10).isActive = true
-        userProfileImageView.leftAnchor.constraint(equalTo: controlsContainerView.leftAnchor, constant: 40).isActive = true
+        userProfileImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        userProfileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 40).isActive = true
         userProfileImageView.widthAnchor.constraint(equalToConstant: 33).isActive = true
         userProfileImageView.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
@@ -602,13 +633,70 @@ class VideoPlayerView: UIView {
         //left constraint
         addConstraint(NSLayoutConstraint(item: moreButton, attribute: .left, relatedBy: .equal, toItem: titleLabel, attribute: .right, multiplier: 1, constant: 0))
         //right constraint
-        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: controlsContainerView, attribute: .right, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: moreButton, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0))
         //height constraint
         addConstraint(NSLayoutConstraint(item: moreButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 33))
         //width constraint
         addConstraint(NSLayoutConstraint(item: moreButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0, constant: 33))
         
         backgroundColor = .black
+        
+        //track orientation even its lock
+        uMM = CMMotionManager()
+        uMM.accelerometerUpdateInterval = 1
+        
+        //  Using main queue is not recommended. So create new operation queue and pass it to startAccelerometerUpdatesToQueue.
+        //  Dispatch U/I code to main thread using dispach_async in the handler.
+        //uMM.startAccelerometerUpdates( to: OperationQueue() ) { data, _ in
+            //if let p = p {
+//                print(
+//            if let data = data{
+//            abs( data.acceleration.y ) < abs( data.acceleration.x )
+//                ?   data.acceleration.x > 0 ? print("right")  :   if !self.isFullScreen{ self.handleFullscreen()}
+//                        :   data.acceleration.y > 0 ? print("down")   :   self.handleUnFullscreen()
+//            }
+//                )
+//                if abs( p.acceleration.y ) < abs( p.acceleration.x ) && p.acceleration.x > 0 {
+//                    print("full screen")
+//                }
+//                if p.acceleration.y > 0 {
+//                    print("not full screen")
+//                }
+//                guard let data = data else{
+//                    return
+//                }
+//                let angle = (atan2(data.acceleration.y,data.acceleration.x))*180/M_PI;
+//                
+//                print(angle)
+//                if(fabs(angle)<=45){
+//                    //self.orientation = AVCaptureVideoOrientation.LandscapeLeft
+//                    print("landscape left")
+//                    //self.handleFullscreen()
+//                }else if((fabs(angle)>45)&&(fabs(angle)<135)){
+//                    
+//                    if(angle>0){
+//                        //self.orientation = AVCaptureVideoOrientation.PortraitUpsideDown
+//                        print("portrait upside Down")
+//                        
+//                        
+//                    }else{
+//                        //self.orientation = AVCaptureVideoOrientation.Portrait
+//                        print("portrait")
+//                      if self.isFullScreen{
+//                            self.handleUnFullscreen()
+//                        }
+//                    }
+//                }else{
+//                    //self.orientation = AVCaptureVideoOrientation.LandscapeRight
+//                    print("landscape right")
+//                   if !self.isFullScreen{
+//                    
+//                        self.handleFullscreen()
+//                    
+//                    }
+//                }
+            //}
+        //}
     }
     
     var player: AVPlayer?
@@ -627,7 +715,7 @@ class VideoPlayerView: UIView {
             //playerLayer?.frame = self.frame
             
             player?.play()
-            
+
             player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
             
             //track player progress
@@ -707,6 +795,7 @@ class VideoPlayerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 class VideoDetailCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
