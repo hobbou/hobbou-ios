@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HeaderChannelCell: BaseCell {
+class HeaderChannelView: UIView {
     
     let containerView: UIView = {
         let view = UIView()
@@ -94,6 +94,12 @@ class HeaderChannelCell: BaseCell {
         return button
     }()
     
+    lazy var featuredChannelView: FeaturedChannelView = {
+        let featuredChannelView = FeaturedChannelView(frame: .zero)
+        featuredChannelView.translatesAutoresizingMaskIntoConstraints = false
+        return featuredChannelView
+    }()
+    
     func handleSubscribe(){
         print("handle subcribe")
     }
@@ -102,38 +108,51 @@ class HeaderChannelCell: BaseCell {
         print("handle configure")
     }
     
-    override func setupViews() {
-        super.setupViews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
         addSubview(channelCoverImageView)
         addSubview(separatorView)
         addSubview(middleSeparatorView)
         addSubview(configureButton)
+        addSubview(featuredChannelView)
         addConstraint(format: "H:|[v0]|", views: channelCoverImageView)
         addConstraint(format: "H:|[v0]|", views: middleSeparatorView)
         addConstraint(format: "H:|[v0]|", views: separatorView)
-        
+        addConstraint(format: "H:[v0]|", views: featuredChannelView)
         addSubview(containerView)
         addConstraint(format: "H:|[v0]|", views: containerView)
         
         //addConstraint(format: "V:|[v0][v1(1)][v2][v3(1)]|", views: channelCoverImageView, middleSeparatorView, containerView, separatorView)
         
         addConstraint(NSLayoutConstraint(item: channelCoverImageView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: channelCoverImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
+        addConstraint(NSLayoutConstraint(item: channelCoverImageView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.20, constant: 0))
         
         addConstraint(NSLayoutConstraint(item: configureButton, attribute: .bottom, relatedBy: .equal, toItem: channelCoverImageView, attribute: .bottom, multiplier: 1, constant: -4))
         addConstraint(NSLayoutConstraint(item: configureButton, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -8))
         addConstraint(NSLayoutConstraint(item: configureButton, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 22))
         addConstraint(NSLayoutConstraint(item: configureButton, attribute: .width, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 22))
         
-
         addConstraint(NSLayoutConstraint(item: middleSeparatorView, attribute: .top, relatedBy: .equal, toItem: channelCoverImageView, attribute: .bottom, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: middleSeparatorView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 1))
         
         addConstraint(NSLayoutConstraint(item: containerView, attribute: .top, relatedBy: .equal, toItem: middleSeparatorView, attribute: .bottom, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.5, constant: 0))
+        addConstraint(NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.20, constant: 0))
         
         addConstraint(NSLayoutConstraint(item: separatorView, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: separatorView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 1))
+        
+        addConstraint(NSLayoutConstraint(item: featuredChannelView, attribute: .top, relatedBy: .equal, toItem: separatorView, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: featuredChannelView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0.6, constant: 0))
+        addConstraint(NSLayoutConstraint(item: featuredChannelView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0))
+        //addConstraint(NSLayoutConstraint(item: featuredChannelView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0))
         
         containerView.addSubview(subscribeButton)
         containerView.addSubview(subscriptionTotalLabel)
@@ -156,15 +175,15 @@ class HeaderChannelCell: BaseCell {
         
         addSubview(channelLogoImageView)
         
-        channelLogoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        channelLogoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        channelLogoImageView.centerYAnchor.constraint(equalTo: middleSeparatorView.centerYAnchor).isActive = true
+        channelLogoImageView.centerXAnchor.constraint(equalTo: middleSeparatorView.centerXAnchor).isActive = true
         channelLogoImageView.heightAnchor.constraint(equalToConstant: 66).isActive = true
         channelLogoImageView.widthAnchor.constraint(equalToConstant: 66).isActive = true
     }
     
 }
 
-class FeaturedChannelCell: BaseCell {
+class FeaturedChannelView: UIView {
     
     lazy var baseContentView: BaseContentView = {
         let baseContentView = BaseContentView()
@@ -179,8 +198,16 @@ class FeaturedChannelCell: BaseCell {
         return view
     }()
     
-    override func setupViews() {
-        super.setupViews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
         addSubview(baseContentView)
         addSubview(separatorView)
         addConstraint(format: "H:|-4-[v0]-4-|", views: baseContentView)
@@ -190,7 +217,7 @@ class FeaturedChannelCell: BaseCell {
     
 }
 
-class MenuContentChannelBarCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MenuContentChannelBarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     
